@@ -77,6 +77,9 @@ Node.js server listening on port PORT...
 
 Open http://localhost:PORT with your browser to see the result.
 
+## Working with Firestore
+
+In order to access the Firestore Database admin panel (really useful for seeing if you're adding/removing data properly or to manually do so), click [here](https://console.firebase.google.com/). I created an account we can all share and will post the credentials in Slack/Discord (feel free to DM me if you need help, obviously). Log in to that account. Navigate to our project (named "Rumble"). In the left sidebar, you should see "Firestore Database". Click that. You should see two collections (as of when I'm writing this): restaurants and users. Again, anything you're unsure about, just ask!
 
 ## Learn More
 
