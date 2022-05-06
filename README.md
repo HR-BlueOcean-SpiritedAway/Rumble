@@ -72,10 +72,10 @@ npm run dev
 
 You should see a message that says:
 ```bash
-Node.js server listening on port <PORT>...
+Node.js server listening on port PORT...
 ```
 
-Open http://localhost:<PORT> with your browser to see the result.
+Open http://localhost:PORT with your browser to see the result.
 
 
 ## Learn More
