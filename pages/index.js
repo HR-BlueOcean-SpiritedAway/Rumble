@@ -23,7 +23,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="text-red-700 font-bold text-xl">
+        <h1 className="text-red-500">
           This is the home page.
         </h1>
         <p>
