@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import { auth } from '../firebase';
 
 /* *****************************************************************************
 * SOME NOTES:
@@ -31,6 +32,7 @@ export default function Home() {
             <a className="underline text-blue-500">Example link</a>
           </Link>
         </p>
+        <button onClick={() => auth.signOut()}>Sign out</button>
       </main>
 
     </div>
