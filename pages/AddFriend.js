@@ -13,7 +13,7 @@ const AddFriend = () => {
       <main>
 
       <div className="flex justify-center items-center">
-        <button className="bg-blue-grey-800 text-white w-[87.7%] h-12 rounded-[10px] mt-3">Add Friend</button>
+        <button className="bg-blue-grey-800 text-white w-[87.7%] h-12 rounded-[14px] mt-3">Add Friend</button>
       </div>
       </main>
     </div>

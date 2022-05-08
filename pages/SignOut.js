@@ -13,7 +13,7 @@ const SignOut = () => {
       <main>
 
       <div className="flex justify-center items-end">
-        <button className="text-white bg-blue-grey-800 px-10 w-[87.7%] h-12 rounded-[10px] mt-3">Sign Out</button>
+        <button className="text-white bg-blue-grey-800 px-10 w-[87.7%] h-12 rounded-[14px] mt-3">Sign Out</button>
       </div>
       </main>
     </div>
