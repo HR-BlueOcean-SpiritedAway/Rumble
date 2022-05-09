@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
-
+import { auth } from '../firebase';
+import Homepage from './Homepage.js';
+import RestaurantSwipeSolo from './RestaurantSwipeSolo';
 /* *****************************************************************************
 * SOME NOTES:
 * - React, useState, useEffect, etc. are automatically imported in Next.js, so
@@ -23,7 +25,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h1 className="text-red-700 font-bold text-xl">
+        <h1 className="text-red-500">
           This is the home page.
         </h1>
         <p>
@@ -36,8 +38,12 @@ export default function Home() {
             <a className="underline text-green-500">Settings Link</a>
           </Link>
         </p>
+        <button onClick={() => auth.signOut()}>Sign out</button>
       </main>
-
     </div>
+    // <>
+    //   <RestaurantSwipeSolo />
+    //   {/* <Homepage /> */}
+    // </>
   );
 }
