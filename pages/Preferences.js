@@ -5,25 +5,31 @@ import Preference from './Preference';
 const Preferences = () => {
   console.log('Preferences being rendered')
   const preferenceOptions = [
-    {'Cuisine Type': ['Mexican', 'Korean', 'Chinese']},
-    {'Delivery Speed': ['30 mins', '45 mins', '1 hour']},
-    {'Price Range': ['$', '$$', '$$$']},
-    {'Location': ['San Francisco', 'Not San Francisco']}
+    {
+      'pref': 'Cuisine Type',
+      'choice': ['Mexican', 'Korean', 'Chinese']
+    },
+    {
+      'pref': 'Delivery Speed',
+      'choice': ['30 mins', '45 mins', '1 hour']
+    },
+    {
+      'pref':'Price Range',
+      'choice': ['$', '$$', '$$$']
+    },
+    {
+      'pref': 'Location',
+      'choice': ['San Francisco', 'Not San Francisco']
+    }
   ]
   return (
     <div>
-      <Head>
-        <title>Preferences</title>
-        <meta name="description" content="Genereted by create next app"/>
-        <link rel="icon" href="/images/favicon.ico" />
-      </Head>
       <main>
-
       <div className="flex justify-center items-center mt-3">
         <div className="bg-blue-grey-800 w-[87.7%] h-72 rounded-[14px] p-4">
           {
             preferenceOptions.map((preference, index) => {
-              return <Preference key={index}/>;
+              return <Preference preference={preference} key={index}/>;
             })
           }
         </div>
