@@ -31,6 +31,9 @@ export default function Home() {
           <Link href="/example">
             <a className="underline text-blue-500">Example link</a>
           </Link>
+          <Link href="/restaurant">
+            <a className="underline text-blue-500">Restaurant</a>
+          </Link>
         </p>
         <button onClick={() => auth.signOut()}>Sign out</button>
       </main>
