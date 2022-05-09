@@ -3,7 +3,6 @@ import Head from 'next/head';
 import Preference from './Preference';
 
 const Preferences = () => {
-  console.log('Preferences being rendered')
   const preferenceOptions = [
     {
       'pref': 'Cuisine Type',
@@ -23,18 +22,14 @@ const Preferences = () => {
     }
   ]
   return (
-    <div>
-      <main>
-      <div className="flex justify-center items-center mt-3">
-        <div className="bg-limed-spruce w-[87.7%] h-72 rounded-[14px] p-4">
-          {
-            preferenceOptions.map((preference, index) => {
-              return <Preference preference={preference} key={index}/>;
-            })
-          }
-        </div>
+    <div className="flex justify-center items-center mt-3">
+      <div className="bg-limed-spruce w-[87.7%] h-72 rounded-[14px] p-4">
+        {
+          preferenceOptions.map((preference, index) => {
+            return <Preference preference={preference} key={index}/>;
+          })
+        }
       </div>
-      </main>
     </div>
   );
 };
