@@ -1,23 +1,23 @@
 import React from 'react';
 import Head from 'next/head';
 
-const AddFriend = () => {
-  console.log('AddFriend being rendered')
+const SaveChanges = () => {
+  console.log('SaveChanges being rendered')
   return (
     <div>
       <Head>
-        <title>Add Friend</title>
+        <title>Save Changes</title>
         <meta name="description" content="Genereted by create next app"/>
         <link rel="icon" href="/images/favicon.ico" />
       </Head>
       <main>
 
       <div className="flex justify-center items-center">
-        <button className="bg-blue-grey-800 text-white w-[87.7%] h-12 rounded-[14px] mt-3">Add Friend</button>
+        <button className="bg-button-red text-white w-[87.7%] h-12 rounded-[14px] mt-3">Save Changes</button>
       </div>
       </main>
     </div>
   );
 };
 
-export default AddFriend;
+export default SaveChanges;

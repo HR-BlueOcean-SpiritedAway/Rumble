@@ -1,5 +1,5 @@
 import SignOut from './SignOut';
-import AddFriend from './AddFriend';
+import SaveChanges from './SaveChanges';
 import BackButton from './BackButton';
 import ProfilePhoto from './ProfilePhoto';
 import Preferences from './Preferences';
@@ -11,7 +11,7 @@ export default function settings() {
       <BackButton />
       <ProfilePhoto />
       <Preferences />
-      <AddFriend />
+      <SaveChanges />
       <SignOut />
     </div>
   )

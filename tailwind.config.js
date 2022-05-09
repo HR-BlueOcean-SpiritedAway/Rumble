@@ -7,7 +7,8 @@ module.exports = {
     colors: {
       'blue-grey-800': '#37474f',
       'white': '#ffffff',
-      'settings-background': '#1F2427'
+      'settings-background': '#1F2427',
+      'button-red': '#FF6161',
     },
     extend: {},
   },

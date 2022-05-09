@@ -12,7 +12,7 @@ console.log('Preference being rendered')
       </Head>
       <main>
       <div className="flex justify-left items-center text-white">
-        <div className="w-[fill] mt-2">
+        <div className="w-[stretch] mt-2">
           <div className="text-[grey]">Pref</div>
           <div>Value</div>
         </div>
