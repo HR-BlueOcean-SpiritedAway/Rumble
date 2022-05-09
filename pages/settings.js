@@ -1,13 +1,13 @@
-import SignOut from './SignOut';
-import SaveChanges from './SaveChanges';
-import BackButton from './BackButton';
-import ProfilePhoto from './ProfilePhoto';
-import Preferences from './Preferences';
+import SignOut from '../components/SignOut';
+import SaveChanges from '../components/SaveChanges';
+import BackButton from '../components/BackButton';
+import ProfilePhoto from '../components/ProfilePhoto';
+import Preferences from '../components/Preferences';
 
 
 export default function settings() {
   return (
-    <div className="bg-settings-background h-screen">
+    <div className="bg-black h-screen">
       <BackButton />
       <ProfilePhoto />
       <Preferences />

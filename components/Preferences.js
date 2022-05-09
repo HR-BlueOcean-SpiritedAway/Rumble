@@ -26,7 +26,7 @@ const Preferences = () => {
     <div>
       <main>
       <div className="flex justify-center items-center mt-3">
-        <div className="bg-blue-grey-800 w-[87.7%] h-72 rounded-[14px] p-4">
+        <div className="bg-limed-spruce w-[87.7%] h-72 rounded-[14px] p-4">
           {
             preferenceOptions.map((preference, index) => {
               return <Preference preference={preference} key={index}/>;
