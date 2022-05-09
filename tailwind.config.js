@@ -21,7 +21,7 @@ module.exports = {
     fontFamily: {
       regular: ['Roboto-Regular'],
       bold: ['Roboto-Bold'],
-      black: ['Roboto-Black'],
+      dark: ['Roboto-Black'],
       thin: ['Roboto-Light'],
     }
   },
