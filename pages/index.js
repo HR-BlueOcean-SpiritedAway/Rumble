@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { auth } from '../firebase';
-
+import Homepage from './Homepage.js';
+import RestaurantSwipeSolo from './RestaurantSwipeSolo';
 /* *****************************************************************************
 * SOME NOTES:
 * - React, useState, useEffect, etc. are automatically imported in Next.js, so
@@ -35,9 +36,17 @@ export default function Home() {
             <a className="underline text-blue-500">Restaurant</a>
           </Link>
         </p>
+        <p>
+          <Link href="/settings">
+            <a className="underline text-green-500">Settings Link</a>
+          </Link>
+        </p>
         <button onClick={() => auth.signOut()}>Sign out</button>
       </main>
-
     </div>
+    // <>
+    //   <RestaurantSwipeSolo />
+    //   {/* <Homepage /> */}
+    // </>
   );
 }

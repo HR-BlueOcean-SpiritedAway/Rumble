@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+<<<<<<< HEAD
 .toggle-switch {
   position: relative;
   display: inline-block;
@@ -47,4 +48,26 @@
 
 .toggle-switch input[type="checkbox"]:checked + .switch {
   background-color: rgb(234, 234, 234);
+=======
+@layer base {
+  @font-face {
+    font-family: 'Roboto-Regular';
+    src: url('../assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Roboto-Bold';
+    src: url('../assets/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Roboto-Light';
+    src: url('../assets/fonts/Roboto/Roboto-Light.ttf') format('truetype');
+  }
+
+  @font-face {
+    font-family: 'Roboto-Black';
+    src: url('../assets/fonts/Roboto/Roboto-Black.ttf') format('truetype');
+  }
+>>>>>>> main
 }
