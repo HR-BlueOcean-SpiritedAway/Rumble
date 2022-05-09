@@ -33,6 +33,11 @@ export default function Home() {
             <a className="underline text-blue-500">Example link</a>
           </Link>
         </p>
+        <p>
+          <Link href="/settings">
+            <a className="underline text-green-500">Settings Link</a>
+          </Link>
+        </p>
         <button onClick={() => auth.signOut()}>Sign out</button>
       </main>
     </div>
