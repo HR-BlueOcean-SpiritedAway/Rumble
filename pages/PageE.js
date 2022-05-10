@@ -23,7 +23,7 @@ function PageE() {
 
       <div className="h-24 ">
         <div className="h-14 flex items-center">
-          <p className="font-regular m-auto text-white text-4xl"> IT'S A MATCH! </p>
+          <p className="font-regular m-auto text-white text-4xl"> ITS A MATCH! </p>
         </div>
         <div className="h-10 flex items-center ">
           <p className="font-regular m-auto text-white text-1xl"> You and _____ liked ____________________ </p>
