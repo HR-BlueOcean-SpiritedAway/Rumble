@@ -18,9 +18,9 @@ const data = [
   }
 ];
 
-const topThree = data.map((element) => {
+const topThree = data.map((element, index) => {
   return (
-    <div className={`w-64 h-48 bg-fixed border-2 rounded-full border-gold bg-dark-grey text-center text-white`}>
+    <div key={index} className={`w-64 h-48 bg-fixed border-2 rounded-full border-gold bg-dark-grey text-center text-white`}>
     <div>{element.name}</div>
     <div className="py-16">{element.category + " restaurant"}</div>
   </div>
