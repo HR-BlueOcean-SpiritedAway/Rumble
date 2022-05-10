@@ -17,13 +17,14 @@ import RestaurantSwipeSolo from './RestaurantSwipeSolo';
 
 export default function Home() {
   return (
-    <div>
+    <>
+    {/* <div> */}
       <Head>
         <title>Rumble</title>
         <meta name="description" content="Blue Ocean project for Hack Reactor RFP2202" />
         <link rel="icon" href="/images/favicon.ico" />
       </Head>
-
+{/*
       <main>
         <h1 className="text-red-500">
           This is the home page.
@@ -35,10 +36,10 @@ export default function Home() {
         </p>
         <button onClick={() => auth.signOut()}>Sign out</button>
       </main>
-    </div>
-    // <>
-    //   <RestaurantSwipeSolo />
-    //   {/* <Homepage /> */}
-    // </>
+    </div> */}
+      <RestaurantSwipeSolo />
+      {/* <Homepage /> */}
+
+    </>
   );
 }
