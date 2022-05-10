@@ -24,11 +24,11 @@ import leftArrow from '../public/images/left-arrow.svg';
 
 function BackButton({ clickHandler }) {
   return (
-    <div className="rounded-full z-50 hover:cursor-pointer h-[30px] w-[30px]
+    <div className="rounded-[50%] z-50 hover:cursor-pointer h-[30px] w-[30px]
                     shadow-light grid items-center justify-items-center
                     bg-limed-spruce"
     >
-      <div className="w-1/2 h-1/2 relative">
+      <div className="w-1/2 h-1/2 relative" onClick={() => clickHandler()}>
         <Image
           src={leftArrow}
           alt=""
