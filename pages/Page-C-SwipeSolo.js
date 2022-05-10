@@ -85,9 +85,9 @@ export default function RestaurantSwipeSolo () {
   return (
     <div className="bg-[#1f2427] h-screen flex flex-col justify-between bg-cover">
       <div className="py-7 px-7 flex justify-around">
-        <Image alt="setting" src={setting}/>
-        <Image alt="white logo" src={logo_white}/>
-        <Image alt="single user" src={single_user}/>
+        <Image width={30} height={30} alt="setting" src={setting}/>
+        <Image width={30} height={30} alt="white logo" src={logo_white}/>
+        <Image width={30} height={30} alt="single user" src={single_user}/>
       </div>
       <div className="container h-500">
         <div className="h-100">
@@ -124,11 +124,11 @@ export default function RestaurantSwipeSolo () {
             <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => goBack()}>Undo swipe!</button>
             <button style={{ backgroundColor: !canSwipe && '#c3c4d3' }} onClick={() => swipe('right')}>Swipe right!</button>
           </div>
-          <div class="mt-20 flex space-x-10 justify-center">
-            <div onClick={() => swipe('left')}><Image alt="dislike" src={dislike} /></div>
-            <div onClick={() => swipe('right')}> <Image alt="like" src={like}/></div>
+          <div className="mt-20 flex space-x-10 justify-center">
+            <div onClick={() => swipe('left')}><Image width={30} height={30} alt="dislike" src={dislike} /></div>
+            <div onClick={() => swipe('right')}> <Image width={30} height={30} alt="like" src={like}/></div>
           </div>
-          <div class="bg-white mx-4 px-2 py-6 rounded-[25px] mt-5 mb-5">
+          <div className="bg-white mx-4 px-2 py-6 rounded-[25px] mt-5 mb-5">
             <div className="flex justify-around pb-2">
               <div className="text-[#37474F] font-bold">About</div>
               <div className="text-[#9D9D9D] bg-[#1f2427] mx-4 px-2 rounded-[25px] text-[14px]">$$$</div>
@@ -139,10 +139,10 @@ export default function RestaurantSwipeSolo () {
           </div>
         </div>
        <div className="py-5 px-5 flex justify-around">
-         <Link href="cart"><Image alt="cart" src={cart}/></Link>
-         <Image alt="restaurants" src={restaurants}/>
-         <Image alt="list" src={list}/>
-         <Image alt="add friend" src={addFriend}/>
+         <Link href="cart"><Image width={30} height={30} alt="cart" src={cart}/></Link>
+         <Image width={30} height={30} alt="restaurants" src={restaurants}/>
+         <Image width={30} height={30} alt="list" src={list}/>
+         <Image width={30} height={30} alt="add friend" src={addFriend}/>
        </div>
      </div>
   );

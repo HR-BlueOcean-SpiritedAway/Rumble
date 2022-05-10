@@ -1,8 +1,12 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { auth } from '../firebase';
-import Homepage from './Homepage.js';
-import RestaurantSwipeSolo from './RestaurantSwipeSolo';
+
+// Components
+import Homepage from './Page-B-homepage.js';
+// import FavoritesPage from './Favoritespage';
+
+
 /* *****************************************************************************
 * SOME NOTES:
 * - React, useState, useEffect, etc. are automatically imported in Next.js, so
@@ -17,14 +21,13 @@ import RestaurantSwipeSolo from './RestaurantSwipeSolo';
 
 export default function Home() {
   return (
-    <>
-    {/* <div> */}
+    <div>
       <Head>
         <title>Rumble</title>
         <meta name="description" content="Blue Ocean project for Hack Reactor RFP2202" />
         <link rel="icon" href="/images/favicon.ico" />
       </Head>
-{/*
+
       <main>
         <h1 className="text-red-500">
           This is the home page.
@@ -34,12 +37,30 @@ export default function Home() {
             <a className="underline text-blue-500">Example link</a>
           </Link>
         </p>
+        <p>
+          <Link href="/Page-G-Settings">
+            <a className="underline text-green-500">Page-G-Settings Link</a>
+          </Link>
+        </p>
+        <p>
+        <Link href="Page-C-SwipeSolo">
+          <a className="underline text-green-500"> Page-C-SwipeSolo Link</a>
+        </Link>
+        <br/>
+          <Link href="/Page-E-matchGroup">
+            <a className="underline text-green-500">PageE Link</a>
+          </Link>
+        </p>
+        <Link href="/Page-L-SelectedRestaurants">
+        <a className="underline text-green-500">Page L Link</a>
+        </Link>
+        <br/>
+        <Link href="Page-B-homepage">
+          <a className="underline text-green-500"> Page B Link</a>
+        </Link>
+        <br/>
         <button onClick={() => auth.signOut()}>Sign out</button>
       </main>
-    </div> */}
-      <RestaurantSwipeSolo />
-      {/* <Homepage /> */}
-
-    </>
+    </div>
   );
 }
