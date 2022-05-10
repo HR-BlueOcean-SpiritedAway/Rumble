@@ -4,8 +4,6 @@ import { auth } from '../firebase';
 
 // Components
 import Homepage from './Page-B-homepage.js';
-// import FavoritesPage from './Favoritespage';
-
 
 /* *****************************************************************************
 * SOME NOTES:
@@ -57,6 +55,10 @@ export default function Home() {
         <br/>
         <Link href="Page-B-homepage">
           <a className="underline text-green-500"> Page B Link</a>
+        </Link>
+        <br/>
+        <Link href="Page-K-FavoritesPage">
+          <a className="underline text-green-500"> Page K Link</a>
         </Link>
         <br/>
         <button onClick={() => auth.signOut()}>Sign out</button>
