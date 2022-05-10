@@ -5,7 +5,7 @@ import { auth } from '../firebase';
 // Components
 import Homepage from './Page-B-homepage.js';
 // import FavoritesPage from './Favoritespage';
-import RestaurantSwipeSolo from './RestaurantSwipeSolo';
+
 
 /* *****************************************************************************
 * SOME NOTES:
@@ -38,12 +38,16 @@ export default function Home() {
           </Link>
         </p>
         <p>
-          <Link href="/settings">
-            <a className="underline text-green-500">Settings Link</a>
+          <Link href="/Page-G-Settings">
+            <a className="underline text-green-500">Page-G-Settings Link</a>
           </Link>
         </p>
         <p>
-          <Link href="/PageE">
+        <Link href="Page-C-SwipeSolo">
+          <a className="underline text-green-500"> Page-C-SwipeSolo Link</a>
+        </Link>
+        <br/>
+          <Link href="/Page-E-matchGroup">
             <a className="underline text-green-500">PageE Link</a>
           </Link>
         </p>
