@@ -2,72 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-<<<<<<< HEAD
 .toggle-switch {
   position: relative;
   display: inline-block;
   width: 80%;
-  height: 3rem;
-  margin-top: 10px;
-  margin-left: 10px;
+  height: 2.75rem;
 }
-
 .toggle-switch input[type="checkbox"] {
   display: none;
 }
-
 .toggle-switch .switch {
   position: absolute;
   cursor: pointer;
-  background-color: rgb(234, 234, 234);
-  border-radius: 2.5rem;
+  background-color: #A48111;
+  border-radius: 25px;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.4s ease;
 }
-
 .toggle-switch .switch::before {
   position: absolute;
   content: "";
   left: 0px;
   top: 0px;
   width: 55%;
-  height: 3rem;
-  background-color: white;
-  border: 1px solid rgb(234, 234, 234);
-  border-radius: 2.5rem;
+  height: 100%;
+  background-color: #A59E9E;
+  border-radius: 25px;
   transition: transform 0.3s ease;
 }
-
 .toggle-switch input[type="checkbox"]:checked + .switch::before {
   transform: translateX(82.5%);
-  background-color: white;
+  background-color: #A59E9E;
 }
-
 .toggle-switch input[type="checkbox"]:checked + .switch {
-  background-color: rgb(234, 234, 234);
-=======
-@layer base {
-  @font-face {
-    font-family: 'Roboto-Regular';
-    src: url('../assets/fonts/Roboto/Roboto-Regular.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Roboto-Bold';
-    src: url('../assets/fonts/Roboto/Roboto-Bold.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Roboto-Light';
-    src: url('../assets/fonts/Roboto/Roboto-Light.ttf') format('truetype');
-  }
-
-  @font-face {
-    font-family: 'Roboto-Black';
-    src: url('../assets/fonts/Roboto/Roboto-Black.ttf') format('truetype');
-  }
->>>>>>> main
+  background-color: #3074AB;
 }

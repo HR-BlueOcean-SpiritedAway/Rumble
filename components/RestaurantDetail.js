@@ -1,4 +1,7 @@
+import Image from 'next/image';
 import ToggleSwitch from './ToggleSwitch';
+import heartSrc from '../public/images/heart.svg';
+
 
 export default function RestaurantDetail() {
   const data = {
@@ -29,8 +32,11 @@ export default function RestaurantDetail() {
   return (
     <div>
       <img className='relative w-full h-48 object-cover object-center' src={data.dishes[0].photoURL}></img>
-      <svg className='absolute w-8 top-2.5 left-2.5 fill-white cursor-pointer' clipRule="evenodd" fillRule="evenodd" strokeLinejoin="round" strokeMiterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.012 2c5.518 0 9.997 4.48 9.997 9.998 0 5.517-4.479 9.997-9.997 9.997s-9.998-4.48-9.998-9.997c0-5.518 4.48-9.998 9.998-9.998zm-1.523 6.21s-1.502 1.505-3.255 3.259c-.147.147-.22.339-.22.531s.073.383.22.53c1.753 1.754 3.254 3.258 3.254 3.258.145.145.335.217.526.217.192-.001.384-.074.531-.221.292-.293.294-.766.003-1.057l-1.977-1.977h6.693c.414 0 .75-.336.75-.75s-.336-.75-.75-.75h-6.693l1.978-1.979c.29-.289.287-.762-.006-1.054-.147-.147-.339-.221-.53-.222-.19 0-.38.071-.524.215z" fillRule="nonzero"/></svg>
-      <svg className='absolute w-8 top-3 right-2.5 fill-white cursor-pointer' xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M6.28 3c3.236.001 4.973 3.491 5.72 5.031.75-1.547 2.469-5.021 5.726-5.021 2.058 0 4.274 1.309 4.274 4.182 0 3.442-4.744 7.851-10 13-5.258-5.151-10-9.559-10-13 0-2.676 1.965-4.193 4.28-4.192zm.001-2c-3.183 0-6.281 2.187-6.281 6.192 0 4.661 5.57 9.427 12 15.808 6.43-6.381 12-11.147 12-15.808 0-4.011-3.097-6.182-6.274-6.182-2.204 0-4.446 1.042-5.726 3.238-1.285-2.206-3.522-3.248-5.719-3.248z"/></svg>
+      <div className='absolute flex justify-center items-center top-3 right-3 w-8 h-8 rounded-full bg-limed-spruce pt-1 pb-1 pr-2 pl-2'>
+        <Image src={heartSrc} width={25} height={25} alt='heart'/>
+      </div>
+      <button className='absolute top-3 left-3 bg-limed-spruce text-white w-[30px] h-[30px] rounded-[30px]'><svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 16 24'><path fill='#ffffff' d='M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z'/></svg>
+      </button>
       <div className='pl-3'>
         <div className='font-bold text-2xl tracking-wide pt-2.5'>{data.restaurantName}</div><br></br>
         <div>
