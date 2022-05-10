@@ -21,6 +21,7 @@
     "react": "18.1.0",
     "react-dom": "18.1.0",
     "react-firebase-hooks": "^5.0.3",
+    "react-tinder-card": "^1.4.5",
     "react-multi-carousel": "^2.8.0"
   },
   "devDependencies": {
