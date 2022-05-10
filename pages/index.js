@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { auth } from '../firebase';
-import Homepage from './Homepage.js';
-import RestaurantSwipeSolo from './RestaurantSwipeSolo';
+
+// Components
+import Homepage from './Page-B-homepage.js';
+
 /* *****************************************************************************
 * SOME NOTES:
 * - React, useState, useEffect, etc. are automatically imported in Next.js, so
@@ -37,16 +39,33 @@ export default function Home() {
           </Link>
         </p>
         <p>
-          <Link href="/settings">
-            <a className="underline text-green-500">Settings Link</a>
+          <Link href="/Page-G-Settings">
+            <a className="underline text-green-500">Page-G-Settings Link</a>
           </Link>
         </p>
+        <p>
+        <Link href="Page-C-SwipeSolo">
+          <a className="underline text-green-500"> Page-C-SwipeSolo Link</a>
+        </Link>
+        <br/>
+          <Link href="/Page-E-matchGroup">
+            <a className="underline text-green-500">PageE Link</a>
+          </Link>
+        </p>
+        <Link href="/Page-L-SelectedRestaurants">
+        <a className="underline text-green-500">Page L Link</a>
+        </Link>
+        <br/>
+        <Link href="Page-B-homepage">
+          <a className="underline text-green-500"> Page B Link</a>
+        </Link>
+        <br/>
+        <Link href="Page-K-FavoritesPage">
+          <a className="underline text-green-500"> Page K Link</a>
+        </Link>
+        <br/>
         <button onClick={() => auth.signOut()}>Sign out</button>
       </main>
     </div>
-    // <>
-    //   <RestaurantSwipeSolo />
-    //   {/* <Homepage /> */}
-    // </>
   );
 }

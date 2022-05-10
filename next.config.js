@@ -3,8 +3,11 @@ const nextConfig = {
   reactStrictMode: true,
 }
 
-module.exports = nextConfig
-
-/* installed next-image, and this is for config for next-image */
 const withImages = require('next-images')
-module.exports = withImages()
+
+module.exports = withImages({
+  images: {
+    domains: ["https://lh3.googleusercontent.com"],
+    disableStaticImages: true,
+  },
+})
