@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { auth } from '../firebase';
 
 // Components
-import Homepage from './Homepage.js';
+import Homepage from './Page-B-homepage.js';
 // import FavoritesPage from './Favoritespage';
 import RestaurantSwipeSolo from './RestaurantSwipeSolo';
 
@@ -47,12 +47,16 @@ export default function Home() {
             <a className="underline text-green-500">PageE Link</a>
           </Link>
         </p>
+        <Link href="/Page-L-SelectedRestaurants">
+        <a className="underline text-green-500">Page L Link</a>
+        </Link>
+        <br/>
+        <Link href="Page-B-homepage">
+          <a className="underline text-green-500"> Page B Link</a>
+        </Link>
+        <br/>
         <button onClick={() => auth.signOut()}>Sign out</button>
       </main>
     </div>
-    // <>
-      //   <RestaurantSwipeSolo />
-      //   {/* <Homepage /> */}
-    // </>
   );
 }
