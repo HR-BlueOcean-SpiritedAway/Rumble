@@ -29,9 +29,30 @@ export default function Home() {
       </Head>
 
       <main>
-        {/* <Homepage /> */}
-        {/* <FavoritesPage /> */}
+        <h1 className="text-red-500">
+          This is the home page.
+        </h1>
+        <p>
+          <Link href="/example">
+            <a className="underline text-blue-500">Example link</a>
+          </Link>
+        </p>
+        <p>
+          <Link href="/settings">
+            <a className="underline text-green-500">Settings Link</a>
+          </Link>
+        </p>
+        <p>
+          <Link href="/PageE">
+            <a className="underline text-green-500">PageE Link</a>
+          </Link>
+        </p>
+        <button onClick={() => auth.signOut()}>Sign out</button>
       </main>
     </div>
+    // <>
+      //   <RestaurantSwipeSolo />
+      //   {/* <Homepage /> */}
+    // </>
   );
 }
