@@ -42,6 +42,11 @@ export default function Home() {
             <a className="underline text-green-500">Settings Link</a>
           </Link>
         </p>
+        <p>
+          <Link href="/PageE">
+            <a className="underline text-green-500">PageE Link</a>
+          </Link>
+        </p>
         <button onClick={() => auth.signOut()}>Sign out</button>
       </main>
     </div>
