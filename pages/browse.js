@@ -3,7 +3,6 @@ import axios from 'axios';
 
 import BackButton from '../components/Backbtn';
 import SearchBar from '../components/SearchBar';
-import SearchIcon from '../public/images/search.svg'
 
 export default function BrowseRestaurants() {
   const [restaurants, setRestaurants] = useState([]);
