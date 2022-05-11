@@ -59,13 +59,9 @@ function PageE() {
           <p className="font-regular m-auto text-white text-1xl"> The group liked ______________! </p>
         </div>
       </div>
-
       <div className="relative border-4 border-[green] mt-[20px]">
 
-
         <Card />
-
-
 
         <div className="absolute top-[200px] left-[158px] w-[60px] h-[40px] border-4 border-[black] bg-[grey]">
         </div>
@@ -83,24 +79,11 @@ function PageE() {
           <button className="absolute top-[20px] right-[10px] w-[150px] h-[50px] font-semibold py-2 px-4 border border-gray-400 rounded-[20px] shadow bg-limed-spruce">
             Reject
           </button>
-
         </div>
-
-
       </div>
-
-
-
-
     </div>
   );
 }
-
-    // <img src={urlFood} className="absolute w-24 h-24 rounded-full border-red-400 border-2">
-        // </img>
-
-        // <img src={urlUser2} className="absolute top-64 right-4 w-24 h-24 rounded-full border-red-400 border-2">
-        // </img>
 
 export default PageE;
 
