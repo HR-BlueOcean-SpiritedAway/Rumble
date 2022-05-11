@@ -2,7 +2,6 @@ const { initializeApp } = require('firebase/app');
 const { getAuth, GoogleAuthProvider } = require('firebase/auth');
 const { getFirestore } = require('firebase/firestore');
 
-console.log(process.env.NEXT_PUBLIC_APIKEY);
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_APIKEY,

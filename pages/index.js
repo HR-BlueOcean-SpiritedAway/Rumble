@@ -71,8 +71,6 @@ export default function Home() {
         </Link>
         <br/>
 
-
-
         <Link href="/Page-J-Restaurant">
           <a className="underline text-blue-500">Page-J-Restaurant</a>
         </Link>
@@ -88,8 +86,11 @@ export default function Home() {
         </Link>
         <br/>
 
-
-
+        <Link href="Page-H-BrowseRestaurants">
+          <a className="underline text-green-500">Page H Link</a>
+        </Link>
+        <br/>
+            
         <button onClick={() => auth.signOut()}>Sign out</button>
       </main>
     </div>
