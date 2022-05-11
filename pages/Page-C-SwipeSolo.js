@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import Router from 'next/router';
 import TinderCard from 'react-tinder-card';
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import axios from 'axios';
+import { useHistory, Redirect } from 'react-router-dom';
 
 // Below is for icons
 import setting from '../public/images/setting.svg';
@@ -21,7 +23,10 @@ export default function RestaurantSwipeSolo () {
   const [lastDirection, setLastDirection] = useState('')
   const [favorite, setFavorite] = useState([])
   const [db, setDb] = useState([])
+  const [rightSwipes, setRightSwipes] = useState([]);
+  const [currentPage, setCurrentPage] = useState('');
 
+  //let history = useHistory();
 
   useEffect(() => {
     axios.get('/api/restaurants/test')
@@ -33,6 +38,12 @@ export default function RestaurantSwipeSolo () {
     setCurrentIndex(db.length ? db.length - 1 : 0)
   }, [db])
 
+  useEffect(() => {
+    if(rightSwipes.length === 3) {
+    Router.push('/Page-L-SelectedRestaurants');
+    }
+  }, [rightSwipes])
+
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex)
   const childRefs = useMemo(
@@ -40,7 +51,7 @@ export default function RestaurantSwipeSolo () {
       Array(db.length)
         .fill(0)
         .map((i) => React.createRef()),
-    []
+    [db.length]
   )
 
   const updateCurrentIndex = (val) => {
@@ -52,10 +63,18 @@ export default function RestaurantSwipeSolo () {
   const canSwipe = currentIndex >= 0
 
   // set last direction and decrease current index
-  const swiped = (direction, nameToDelete, index) => {
-    setLastDirection(direction)
-    updateCurrentIndex(index - 1)
+  const swiped = (direction, nameToDelete, index, res) => {
+    if(direction === 'right') {
+      setRightSwipes((prev) => {
+        return [res].concat(prev)});
+      }
+    if (rightSwipes.length === 2) {
+      sessionStorage.setItem('swipedRestaurants', JSON.stringify(rightSwipes));
+    }
+    setLastDirection(direction);
+    updateCurrentIndex(index - 1);
   }
+
 
   const outOfFrame = (name, idx) => {
     console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current)
@@ -96,7 +115,7 @@ export default function RestaurantSwipeSolo () {
                 className='absolute'
                 key={res.restaurantName}
                 onSwipe={(dir) => {
-                  swiped(dir, res.restaurantName, index);
+                  swiped(dir, res.restaurantName, index, res);
                 }}
                 onCardLeftScreen={() => outOfFrame(res.restaurantName, index)}
               >
@@ -119,16 +138,7 @@ export default function RestaurantSwipeSolo () {
                 </div>
               </TinderCard>
             ))}
-            {lastDirection ? (
-              <h2 key={lastDirection} className=''>
-                You swiped {lastDirection}
-              </h2>
-            ) : (
-              <h2 className=''>
-                Swipe a card or press a button to get Restore Card button visible!
-              </h2>
-            )}
-        <div className="mt-[410px] flex space-x-10 justify-center">
+        <div className="absolute bottom-[80px] left-[60px] flex space-x-10 justify-center">
           <div onClick={() => swipe('left')}><Image width={30} height={30} alt="dislike" src={dislike} /></div>
           <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => goBack()}>Undo swipe!</button>
           <div onClick={() => swipe('right')}> <Image width={30} height={30} alt="like" src={like}/></div>

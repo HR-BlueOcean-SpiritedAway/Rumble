@@ -1,22 +1,23 @@
  import RestaurantCard from './RestaurantCard.js';
  import foodSrc from '../public/images/food-img.jpg';
+ import { useEffect } from 'react';
 
-const arrOfRestaurants = [];
+// for (let i = 0; i < 5; i++) {
+//   const obj = {
+//     id: i,
+//     name: "Wing Lum Cafe",
+//     category: "Chinese",
+//     description: 'description',
+//     deliverySpeed: "fast",
+//     avgCost: "$$$",
+//     distance:"12",
+//     imgSrc: foodSrc,
+//     rating: "3.4"
+//   };
+//   arrOfRestaurants.push(obj);
+// };
 
-for (let i = 0; i < 5; i++) {
-  const obj = {
-    id: i,
-    name: "Wing Lum Cafe",
-    category: "Chinese",
-    description: 'description',
-    deliverySpeed: "fast",
-    avgCost: "$$$",
-    distance:"12",
-    imgSrc: foodSrc,
-    rating: "3.4"
-  };
-  arrOfRestaurants.push(obj);
-};
+let arrOfRestaurants = [];
 
 const topThree = arrOfRestaurants.map((restaurant, index) => {
   return (
@@ -27,8 +28,14 @@ const topThree = arrOfRestaurants.map((restaurant, index) => {
 });
 
 export default function Favorite() {
+
+
+  useEffect(()=> {
+      arrOfRestaurants = window.sessionStorage.getItem('swipedRestaurants');
+  }, []);
+
   return (
-    <div className="bg-auto bg-black h-full flex flex-col ">
+    <div className="bg-auto bg-dark-jungle-green h-full flex flex-col ">
       <div className="h-24 rounded-b-[3.5rem] bg-reef-gold text-5xl text-center font-bold text-white">
         <div className="py-5">Top Picks</div>
       </div>

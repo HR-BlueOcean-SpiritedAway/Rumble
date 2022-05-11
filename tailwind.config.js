@@ -29,13 +29,13 @@ module.exports = {
       },
       padding: {
         '120': '400px'
-      }
-    },
-    fontFamily: {
-      regular: ['Roboto-Regular'],
-      bold: ['Roboto-Bold'],
-      dark: ['Roboto-Black'],
-      thin: ['Roboto-Light'],
+      },
+      fontFamily: {
+        regular: ['Roboto-Regular'],
+        bold: ['Roboto-Bold'],
+        dark: ['Roboto-Black'],
+        thin: ['Roboto-Light'],
+      },
     },
   },
   plugins: [],
