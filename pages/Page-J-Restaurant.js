@@ -10,7 +10,6 @@ export default function SingleRestaurant(props) {
   useEffect(() => {
     axios.get('/api/restaurants/restaurant', { params: { restaurant: router.query.name}})
       .then((res) => {
-        console.log('data in useeffect is', res.data[0]);
         setRestaurant([res.data[0]])
       })
       .catch(console.error);
