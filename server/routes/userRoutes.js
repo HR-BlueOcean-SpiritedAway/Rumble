@@ -23,7 +23,7 @@ router.get('/test', async (req, res) => {
     querySnapshot.forEach(doc => {
       allUsers.push(doc.data());
     });
-    
+
     res.json(allUsers);
   } catch (error) {
     res.status(400).json({ message: 'Failed to retrieve users.' });
@@ -45,5 +45,19 @@ router.post('/addFavorite', async (req, res) => {
     res.status(400).json({ message: 'Failed to add favorite.' })
   }
 });
+
+// Send back a list of swiped favorites for a user
+router.get('/getFavorites/:uid', async(req, res) => {
+  const uid = req.params.uid
+  console.log(uid)
+  try {
+    const userDocRef = doc(db, 'users', uid);
+    const snapshot = await getDoc(userDocRef);
+    const favorites = snapshot.data().favorites || [];
+    res.json(favorites);
+  } catch (error) {
+    res.status(400).json({message: 'Could not fetch favorites'});
+  }
+})
 
 module.exports = router;
