@@ -20,6 +20,7 @@ nextApp.prepare().then(() => {
   app.use('/api/users', userRouter);
   app.use('/api/restaurants', restaurantRouter);
 
+
   // Rendering page per request
   app.get("*", (req, res) => handle(req, res));
 

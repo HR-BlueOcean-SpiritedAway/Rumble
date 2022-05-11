@@ -43,6 +43,11 @@ function Bottom({
   );
 }
 
+
+
+
+
+
 export default function RestaurantCard({ restaurant, clickHandler }) {
   return(
     <div
