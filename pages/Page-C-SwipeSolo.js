@@ -22,16 +22,17 @@ export default function RestaurantSwipeSolo () {
   const [favorite, setFavorite] = useState([])
   const [db, setDb] = useState([])
 
-
   useEffect(() => {
     axios.get('/api/restaurants/test')
-    .then(({ data }) => setDb(data))
+    .then(({ data }) => {
+      setDb(data);
+    })
     .catch(console.error)
   }, []);
 
   useEffect(() => {
     setCurrentIndex(db.length ? db.length - 1 : 0)
-  }, [db])
+  }, [db]);
 
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex)
@@ -40,7 +41,7 @@ export default function RestaurantSwipeSolo () {
       Array(db.length)
         .fill(0)
         .map((i) => React.createRef()),
-    []
+    [db.length]
   )
 
   const updateCurrentIndex = (val) => {
@@ -68,6 +69,8 @@ export default function RestaurantSwipeSolo () {
 
   const swipe = async (dir) => {
     if (canSwipe && currentIndex < db.length) {
+      console.log('currentIndex is', currentIndex);
+      console.log('childRefs is', childRefs);
       await childRefs[currentIndex].current.swipe(dir) // Swipe the card!
     }
   }
@@ -128,7 +131,7 @@ export default function RestaurantSwipeSolo () {
                 Swipe a card or press a button to get Restore Card button visible!
               </h2>
             )}
-        <div className="mt-[410px] flex space-x-10 justify-center">
+        <div className="absolute bottom-[80px] left-[60px] flex space-x-10 justify-center">
           <div onClick={() => swipe('left')}><Image width={30} height={30} alt="dislike" src={dislike} /></div>
           <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => goBack()}>Undo swipe!</button>
           <div onClick={() => swipe('right')}> <Image width={30} height={30} alt="like" src={like}/></div>

@@ -67,7 +67,7 @@ function PageE() {
         </div>
 
         <div className="absolute top-[310px] w-full h-[80px] text-center border-4 bg-[red]">
-          Click approve if you like this restaurant or reject if you don't.
+          Click approve if you like this restaurant or reject if you dont.
         </div>
 
         <div className="absolute top-[380px] w-full h-[100px] border-4 bg-[blue]">

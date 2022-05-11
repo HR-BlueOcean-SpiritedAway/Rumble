@@ -71,8 +71,6 @@ export default function Home() {
         </Link>
         <br/>
 
-
-
         <Link href="/Page-J-Restaurant">
           <a className="underline text-blue-500">Page-J-Restaurant</a>
         </Link>
