@@ -2,13 +2,52 @@
  import foodSrc from '../public/images/food-img.jpg';
  import axios from 'axios';
  import { useEffect, useState } from 'react';
+ import Router from 'next/router';
 
  // authorization
  const { auth } = require('../firebase');
  const { useAuthState } = require('react-firebase-hooks/auth')
 
+ const arrOfRestaurants = [];
 
-export default function Favorite() {
+ for (let i = 0; i < 5; i++) {
+   const obj = {
+     id: i,
+     name: "Wing Lum Cafe",
+     restaurantName: "Wing Lum Cafe",
+     category: "Chinese",
+     description: 'description',
+     deliverySpeed: "fast",
+     avgCost: "$$$",
+     distance:"12",
+     imgSrc: foodSrc,
+     rating: "3.4",
+     dishes: [
+       {
+           photoURL: "https://s3-media0.fl.yelpcdn.com/bphoto/-vpD8rR9-v61LpTG9tXiWg/o.jpg",
+           name: "Amatriciana"
+       },
+       {
+           name: "Moto",
+           photoURL: "https://s3-media0.fl.yelpcdn.com/bphoto/9_ZCRhfIUAsj-oeXFFidkQ/o.jpg"
+       },
+       {
+           photoURL: "https://s3-media0.fl.yelpcdn.com/bphoto/yvvLJoKtaSr7z4IUvViPKg/o.jpg",
+           name: "Bianca"
+       }
+   ],
+   };
+   arrOfRestaurants.push(obj);
+ };
+
+ function restaurantClickHandler(restaurant){
+   Router.push({
+     pathname: '/Page-J-Restaurant',
+     query: { name: restaurant.restaurantName}
+   }, '/Page-J-Restaurant');
+ }
+
+export default function SelectedRestaurant() {
   const [favorites, setFavorites] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
   const [user, loading] = useAuthState(auth);
@@ -24,7 +63,7 @@ export default function Favorite() {
     }).then((results) => {
       setFavorites(results.data);
     }).catch(console.error);
-    }, []);
+    }, [user.uid]);
 
     useEffect(() => {
       if(restaurants.length > 0){
@@ -34,21 +73,17 @@ export default function Favorite() {
 
     function favoritesFilter() {
       restaurants.filter((restaurant) => {
-        favorites.forEach((favorite) => {
-          if (favorite === restaurant.id) {
-            console.log(favorite);
-            return true;
-
-          }
-        })
-      })
+        if(favorites.indexOf(restaurant.id) > 0) {
+          return true;
+        }
+      });
     }
   // create restaurant card list
   const topThree = favorites.map((restaurant, index) => {
     return (
-      <div>
+      <>
         <RestaurantCard key={restaurant.id} restaurant={restaurant}/>
-      </div>
+      </>
     )
   });
 

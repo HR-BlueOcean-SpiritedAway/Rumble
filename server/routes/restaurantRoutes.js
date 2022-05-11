@@ -1,5 +1,5 @@
 const { db } = require('../../firebase');
-const { collection, query, getDocs } = require('firebase/firestore');
+const { collection, query, getDocs, where } = require('firebase/firestore');
 
 const router = require('express').Router();
 
@@ -23,8 +23,25 @@ router.get('/test', async (req, res) => {
     querySnapshot.forEach(doc => {
       allRestaurants.push(doc.data());
     });
-    
+
     res.json(allRestaurants);
+  } catch (error) {
+    res.status(400).json({ message: 'Failed to retrieve restaurants.' });
+  }
+});
+
+
+//only queries for 1 single restaurant
+router.get('/restaurant', async (req, res) => {
+  const singleRestaurant = [];
+
+  try {
+    const q = query(restaurantsRef, where("restaurantName","==", req.query.restaurant));
+    const querySnapshot = await getDocs(q);
+    querySnapshot.forEach(doc => {
+      singleRestaurant.push(doc.data());
+    });
+    res.json(singleRestaurant);
   } catch (error) {
     res.status(400).json({ message: 'Failed to retrieve restaurants.' });
   }
