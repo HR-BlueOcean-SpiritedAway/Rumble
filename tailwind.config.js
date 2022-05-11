@@ -28,9 +28,6 @@ module.exports = {
       dark: ['Roboto-Black'],
       thin: ['Roboto-Light'],
     },
-    borderRadius: {
-      '4xl': '3.5rem'
-    },
     extend: {
       lineHeight: {
         'xtraloose': '2.5'
