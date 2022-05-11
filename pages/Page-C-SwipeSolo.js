@@ -14,9 +14,12 @@ import single_user from '../public/images/single_user.svg';
 import restaurants from '../public/images/restaurants.svg';
 import list from '../public/images/list.svg';
 import addFriend from '../public/images/add_friend.svg';
-
 import like from '../public/images/heart.svg';
 import dislike from '../public/images/dislike.svg';
+
+//authorization
+const { auth } = require('../firebase');
+const { useAuthState } = require('react-firebase-hooks/auth')
 
 export default function RestaurantSwipeSolo () {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -25,8 +28,7 @@ export default function RestaurantSwipeSolo () {
   const [db, setDb] = useState([])
   const [rightSwipes, setRightSwipes] = useState([]);
   const [currentPage, setCurrentPage] = useState('');
-
-  //let history = useHistory();
+  const [user, loading] = useAuthState(auth);
 
   useEffect(() => {
     axios.get('/api/restaurants/test')
@@ -68,9 +70,10 @@ export default function RestaurantSwipeSolo () {
       setRightSwipes((prev) => {
         return [res].concat(prev)});
       }
-    if (rightSwipes.length === 2) {
-      sessionStorage.setItem('swipedRestaurants', JSON.stringify(rightSwipes));
-    }
+      axios.post('/api/restaurants/favorites', {
+        userId: user,
+        favorite: res
+      }).catch(console.error);
     setLastDirection(direction);
     updateCurrentIndex(index - 1);
   }
