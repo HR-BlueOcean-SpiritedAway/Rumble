@@ -33,7 +33,6 @@ router.get('/test', async (req, res) => {
 
 //only queries for 1 single restaurant
 router.get('/restaurant', async (req, res) => {
-  // console.log(req.query);
   const singleRestaurant = [];
 
   try {
