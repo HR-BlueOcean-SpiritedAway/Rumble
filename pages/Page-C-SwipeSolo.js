@@ -70,8 +70,8 @@ export default function RestaurantSwipeSolo () {
       setRightSwipes((prev) => {
         return [res].concat(prev)});
       }
-      axios.post('/api/restaurants/favorites', {
-        userId: user,
+      axios.post('/api/restaurants/addFavorite', {
+        userId: user.uid,
         favorite: res
       }).catch(console.error);
     setLastDirection(direction);
