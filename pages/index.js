@@ -64,6 +64,10 @@ export default function Home() {
           <a className="underline text-green-500"> Page K Link</a>
         </Link>
         <br/>
+        <Link href="Page-H-BrowseRestaurants">
+          <a className="underline text-green-500">Page H Link</a>
+        </Link>
+        <br/>
         <button onClick={() => auth.signOut()}>Sign out</button>
       </main>
     </div>
