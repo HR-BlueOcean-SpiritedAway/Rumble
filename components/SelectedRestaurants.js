@@ -38,7 +38,6 @@ for (let i = 0; i < 5; i++) {
 
 
 function restaurantClickHandler(restaurant){
-  console.log('restaurant clickHandler with restaurant', restaurant);
   Router.push({
     pathname: '/Page-J-Restaurant',
     query: { name: restaurant.restaurantName}
