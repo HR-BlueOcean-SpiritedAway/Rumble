@@ -67,8 +67,6 @@ export default function RestaurantSwipeSolo () {
 
   const swipe = async (dir) => {
     if (canSwipe && currentIndex < db.length) {
-//       console.log('currentIndex is', currentIndex);
-//       console.log('childRefs is', childRefs);
       await childRefs[currentIndex].current.swipe(dir) // Swipe the card!
     }
   }
