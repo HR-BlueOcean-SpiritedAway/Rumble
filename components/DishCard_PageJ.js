@@ -29,7 +29,7 @@ function Description({name}){
     </div>
   )
 }
-//border-2 border-[black]
+
 function PriceCart(){
   return (
     <div className="w-[80px] h-[60px] ml-[12px] mr-[12px] ">
