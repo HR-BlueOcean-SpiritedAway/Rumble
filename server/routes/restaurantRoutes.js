@@ -34,10 +34,10 @@ router.get('/test', async (req, res) => {
 //only queries for 1 single restaurant
 router.get('/restaurant', async (req, res) => {
   // console.log(req.query);
-  const q = query(restaurantsRef, where("restaurantName","==", req.query.restaurant));
   const singleRestaurant = [];
 
   try {
+    const q = query(restaurantsRef, where("restaurantName","==", req.query.restaurant));
     const querySnapshot = await getDocs(q);
     querySnapshot.forEach(doc => {
       singleRestaurant.push(doc.data());
