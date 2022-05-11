@@ -8,6 +8,6 @@ const withImages = require('next-images')
 module.exports = withImages({
   images: {
     domains: ["https://lh3.googleusercontent.com"],
+    disableStaticImages: true,
   },
-
 })

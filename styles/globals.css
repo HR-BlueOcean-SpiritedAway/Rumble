@@ -2,6 +2,45 @@
 @tailwind components;
 @tailwind utilities;
 
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 80%;
+  height: 2.75rem;
+}
+.toggle-switch input[type="checkbox"] {
+  display: none;
+}
+.toggle-switch .switch {
+  position: absolute;
+  cursor: pointer;
+  background-color: #A48111;
+  border-radius: 25px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: background-color 0.4s ease;
+}
+.toggle-switch .switch::before {
+  position: absolute;
+  content: "";
+  left: 0px;
+  top: 0px;
+  width: 55%;
+  height: 100%;
+  background-color: #A59E9E;
+  border-radius: 25px;
+  transition: transform 0.3s ease;
+}
+.toggle-switch input[type="checkbox"]:checked + .switch::before {
+  transform: translateX(82.5%);
+  background-color: #A59E9E;
+}
+.toggle-switch input[type="checkbox"]:checked + .switch {
+  background-color: #3074AB;
+}
+
 @layer base {
   @font-face {
     font-family: 'Roboto-Regular';
@@ -22,4 +61,4 @@
     font-family: 'Roboto-Black';
     src: url('../assets/fonts/Roboto/Roboto-Black.ttf') format('truetype');
   }
-}
+};
