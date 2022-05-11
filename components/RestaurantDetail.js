@@ -5,6 +5,9 @@ import DishCard_PageJ from './DishCard_PageJ.js'
 
 export default function RestaurantDetail({restaurant}) {
   console.log('in fnRestaurantDetails with restaurant', restaurant);
+  restaurant = restaurant[0];
+  console.log('in fnRestaurantDetails with restaurant', restaurant);
+
   return (
     <div className="flex flex-col">
       <img className='relative w-full h-[170px] object-cover object-center' src={restaurant.dishes[0].photoURL}></img>
