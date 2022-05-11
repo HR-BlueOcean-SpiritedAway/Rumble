@@ -1,5 +1,5 @@
 const { db } = require('../../firebase');
-const { collection, query, getDocs } = require('firebase/firestore');
+const { collection, query, doc, getDocs, getDoc, updateDoc } = require('firebase/firestore');
 
 const router = require('express').Router();
 
@@ -27,6 +27,22 @@ router.get('/test', async (req, res) => {
     res.json(allUsers);
   } catch (error) {
     res.status(400).json({ message: 'Failed to retrieve users.' });
+  }
+});
+
+// Add a favorite restaurant; POST with body { uid, restaurantID }
+router.post('/addFavorite', async (req, res) => {
+  const { uid, restaurantID } = req.body;
+
+  try {
+    const userDocRef = doc(db, 'users', uid);
+    const docSnap = await getDoc(userDocRef);
+    const favorites = docSnap.data()?.favorites || [];
+    if (!(restaurantID in favorites)) favorites.push(restaurantID);
+    await updateDoc(userDocRef, { favorites });
+    res.sendStatus(201);
+  } catch (error) {
+    res.status(400).json({ message: 'Failed to add favorite.' })
   }
 });
 
