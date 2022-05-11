@@ -48,11 +48,11 @@ function Bottom({
 
 
 
-export default function RestaurantCard({ restaurant, ClickHandler }) {
+export default function RestaurantCard({ restaurant, clickHandler }) {
   return(
     <div
       className="bg-limed-spruce w-[calc(100%_-_30px)] max-w-[500px] rounded-[15px]"
-      onClick={() => ClickHandler()}
+      onClick={() => clickHandler()}
     >
       <Top imgSrc={restaurant.imgSrc} rating={restaurant.rating}/>
       <Bottom
