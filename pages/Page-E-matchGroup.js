@@ -106,11 +106,5 @@ function PageE() {
   );
 }
 
-    // <img src={urlFood} className="absolute w-24 h-24 rounded-full border-red-400 border-2">
-        // </img>
-
-        // <img src={urlUser2} className="absolute top-64 right-4 w-24 h-24 rounded-full border-red-400 border-2">
-        // </img>
-
 export default PageE;
 
