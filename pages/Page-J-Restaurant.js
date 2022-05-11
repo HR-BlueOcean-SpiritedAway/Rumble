@@ -1,6 +1,6 @@
 import RestaurantDetail from '../components/RestaurantDetail';
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter} from 'next/router'
 import axios from 'axios';
 
 //Dummy data
@@ -29,21 +29,12 @@ const restaurantTest = {
   city: "San Francisco"
 }
 
-//end dummy data
 
-// class PageJRestaurant extends React.Component{
-//   // console.log(this.props.router.query.name);
-
-// }
 
 export default function SingleRestaurant(props) {
   const router= useRouter();
-  // console.log('<SingleRestaurant> with props', props);
   const [restaurant, setRestaurant] = useState([]);
-
-  //make axios call here, to catch data from Database
-  console.log('inside SingleRestaurant', router.query.name);
-
+  // console.log('inside SingleRestaurant', router.query.name);
   useEffect(() => {
     axios.get('/api/restaurants/restaurant', { params: { restaurant: router.query.name}})
       .then((res) => {

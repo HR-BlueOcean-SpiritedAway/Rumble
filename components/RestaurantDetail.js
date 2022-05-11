@@ -1,20 +1,42 @@
+import { useState} from 'react';
 import Image from 'next/image';
 import ToggleSwitch from './ToggleSwitch';
 import heartSrc from '../public/images/heart.svg';
+import HeartBtn from './HeartBtn';
+
 import DishCard_PageJ from './DishCard_PageJ.js'
+import Router from 'next/router';
 
 export default function RestaurantDetail({restaurant}) {
-  console.log('in fnRestaurantDetails with restaurant', restaurant);
   restaurant = restaurant[0];
-  console.log('in fnRestaurantDetails with restaurant', restaurant);
+  const [isActive, setIsActive] = useState(false);
+  const btnContInActive = "absolute flex justify-center items-center top-3 right-3 w-8 h-8 rounded-full bg-limed-spruce pt-1 pb-1 pr-2 pl-2";
+  const btnContActive = "absolute flex justify-center items-center top-3 right-3 w-8 h-8 rounded-full bg-sunset-orange pt-1 pb-1 pr-2 pl-2";
+
+  function backButtonClick(){
+    Router.push({
+      pathname: '/Page-L-SelectedRestaurants',
+    }, '/Page-L-SelectedRestaurants');
+  }
+  function heartButtonClick(){
+    console.log('heart button clicked');
+    setIsActive((prev)=>!prev);
+  }
 
   return (
     <div className="flex flex-col">
       <img className='relative w-full h-[170px] object-cover object-center' src={restaurant.dishes[0].photoURL}></img>
-      <div className='absolute flex justify-center items-center top-3 right-3 w-8 h-8 rounded-full bg-limed-spruce pt-1 pb-1 pr-2 pl-2'>
-        <Image src={heartSrc} width={25} height={25} alt='heart'/>
+      <div className={isActive ? btnContActive : btnContInActive}>
+        <Image
+          src={heartSrc}
+          width={25}
+          height={25}
+          alt='heart'
+          onClick={heartButtonClick}
+        />
       </div>
-      <button className='absolute top-3 left-3 bg-limed-spruce text-white w-[30px] h-[30px] rounded-[30px]'><svg width='20' height='20' viewBox='0 0 16 24'><path fill='#ffffff' d='M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z'/></svg>
+      <button className='absolute top-3 left-3 bg-limed-spruce text-white w-[30px] h-[30px] rounded-[30px]' onClick={backButtonClick}>
+        <svg width='20' height='20' viewBox='0 0 16 24'><path fill='#ffffff' d='M16.67 0l2.83 2.829-9.339 9.175 9.339 9.167-2.83 2.829-12.17-11.996z'/></svg>
       </button>
       <div className='pl-3 h-[185px] bg-[#1F2427] flex flex-col'>
         <div className='font-bold text-3xl tracking-wide pt-2.5 pb-1 mt-[-4px] mb-[5px] text-white'>{restaurant.restaurantName}</div>
@@ -49,7 +71,7 @@ export default function RestaurantDetail({restaurant}) {
         <div className='font-bold text-2xl text-white mr-3'>Menu</div>
       </div>
 
-      <div className='pl-3 pr-3 w-full  bg-[#1F2427]'>
+      <div className='pl-3 pr-3 w-full bg-[#1F2427]'>
         {
           restaurant.dishes.map((dish, index)=>{
             return <DishCard_PageJ dish={dish} key={index}/>

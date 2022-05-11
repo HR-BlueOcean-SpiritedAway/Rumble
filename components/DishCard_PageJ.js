@@ -33,8 +33,8 @@ function Description({name}){
 function PriceCart(){
   return (
     <div className="w-[80px] h-[60px] ml-[12px] mr-[12px] ">
-      <div className="w-full h-[30px] mt-[-2px] flex items-end flex-row-reverse text-white ">
-        <p >${prices[Math.floor(Math.random() * (21 - 0 + 1) + 0)].toFixed(2)}</p>
+      <div className="w-full h-[30px] mt-[-2px] flex items-end flex-row-reverse text-white">
+        <p >${Number.parseFloat(prices[Math.floor(Math.random() * (21 - 0 + 1) + 0)]).toFixed(2)}</p>
       </div>
       <div className="w-full h-[30px] flex items-end flex-row-reverse mt-[-10px]">
         <button className="w-[60px] h-[20px] text-white text-xs rounded-[3px] bg-[#FC6265]"> Add Cart </button>

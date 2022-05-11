@@ -33,18 +33,13 @@ router.get('/test', async (req, res) => {
 
 //only queries for 1 single restaurant
 router.get('/restaurant', async (req, res) => {
-  // console.log(req.body);
-  // console.log(req.params);
-  console.log(req.query);
-
+  // console.log(req.query);
   const q = query(restaurantsRef, where("restaurantName","==", req.query.restaurant));
   const singleRestaurant = [];
 
   try {
     const querySnapshot = await getDocs(q);
-    // Gotcha: querySnapshot is not exactly an array, so you cannot use `.map()`
     querySnapshot.forEach(doc => {
-      console.log('doc data is', doc.data());
       singleRestaurant.push(doc.data());
     });
     res.json(singleRestaurant);

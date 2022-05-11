@@ -43,8 +43,6 @@ function restaurantClickHandler(restaurant){
     pathname: '/Page-J-Restaurant',
     query: { name: restaurant.restaurantName}
   }, '/Page-J-Restaurant');
-
-
 }
 
 const topThree = arrOfRestaurants.map((restaurant, index) => {
