@@ -52,7 +52,8 @@ const topThree = arrOfRestaurants.map((restaurant, index) => {
     </>
   )
 });
-export default function Favorite() {
+
+export default function SelectedRestaurant() {
   return (
     <div className="bg-auto bg-black h-full flex flex-col ">
       <div className="h-24 rounded-b-[3.5rem] bg-reef-gold text-5xl text-center font-bold text-white">
