@@ -7,9 +7,9 @@ import ColoredTag from '../components/ColoredTag';
 
 function Checkbox(){
   const [checked, setChecked] = useState(true);
-  console.log('fn Checkbox, checked is', checked);
+  // console.log('fn Checkbox, checked is', checked);
   function checkboxHandler(){
-    console.log('checkbox clicked');
+    // console.log('checkbox clicked');
     setChecked(prevState => !prevState);
   }
   return (
@@ -23,29 +23,26 @@ function Checkbox(){
   )
 }
 
-// 'sunset-orange': '#FF6161',
-//       'limed-spruce': '#37474F',
-//       'dark-jungle-green': '#1F2427',
-//       'white': '#FFFFFF',
-//       'black': '#000000',
-//       'star-dust': '#A59E9E',
-//       'star-dust-light': '#9D9D9D',
-//       'reef-gold': '#A48111',
-//       'moccasin': '#8D733F',
-//       'military-green': '#65793E',
-//       'flat-blue': '#3074AB',
-
 function Picture({imgSrc}){
   return (
     <div className="relative w-[80px] h-[80px] ml-[8px] rounded-[15px] border-2 border-[black] overflow-hidden" >
-    <Image src={imgSrc}  layout="fill" alt='food'/>
+      <Image src={imgSrc}  layout="fill" alt='food'/>
     </div>
   )
 }
-function Description(){
+function Description({restaurant}){
   return (
-    <div className="w-[160px] h-[60px] ml-[8px] border-2 border-[black]">
-    <p> description</p>
+    <div className="w-[160px] h-[60px] ml-[8px] flex flex-col border-2 border-[black]">
+      <div className="w-full h-[15px] text-white text-xs border-2 border-[black]">
+      <p> {restaurant.category} food</p>
+      </div>
+      <div className="w-full h-[20px]">
+      <p> DISH NAME</p>
+      </div>
+      <div className="w-full h-[20px]">
+      <p> PRICE</p>
+      </div>
+
     </div>
   )
 
@@ -61,7 +58,7 @@ function Quantity(){
 export default function RestaurantCardCart({ restaurant}) {
 
   function clickHandler(){
-    console.log('all of restaurant card clicked');
+    // console.log('all of restaurant card clicked');
   }
 
   return(
@@ -71,7 +68,7 @@ export default function RestaurantCardCart({ restaurant}) {
     >
       <Checkbox></Checkbox>
       <Picture imgSrc={restaurant.imgSrc}></Picture>
-      <Description></Description>
+      <Description restaurant={restaurant}></Description>
       <Quantity></Quantity>
 
     </div>

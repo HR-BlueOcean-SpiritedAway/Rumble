@@ -43,13 +43,13 @@ function Btn({ text, clickHandler, colorName }) {
   );
 }
 
+//data needed
+// 'profile image of person1'
+// 'profile image of person2'
+// 'image url of dish both swiped on'
+
 function PageE() {
-  console.log("needs to pull ");
-  console.log('profile image of person1');
-  console.log('profile image of person2');
-  console.log('image url of dish both swiped on');
   const [user, loading] = useAuthState(auth);
-  console.log('user ', user);
 
   return (
     <div className="h-screen w-screen block bg-dark-jungle-green">

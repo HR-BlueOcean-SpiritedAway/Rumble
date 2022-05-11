@@ -5,6 +5,8 @@ import { v4 as uuid } from 'uuid';
 import BackBtn from '../components/Backbtn';
 
 
+
+
 /* -------- Dummy Data Start -------- */
 import foodSrc from '../public/images/food-img.jpg';
 
@@ -24,7 +26,6 @@ for (let i = 0; i < 3; i++) {
   };
   arrOfRestaurants.push(obj);
 }
-
 /* -------- Dummy Data End -------- */
 
 function Header() {
