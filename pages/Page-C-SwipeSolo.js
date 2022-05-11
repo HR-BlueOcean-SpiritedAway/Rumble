@@ -42,12 +42,6 @@ export default function RestaurantSwipeSolo () {
         .map((i) => React.createRef()),
     []
   )
-  // const addToFav = (direction, restaurantName) => {
-  //   if (direction === "right") {
-  //     favorite.push({ restaurantName })
-  //   }
-  //   setFavorite( [...favorite, {restaurantName}] )
-  // }
 
   const updateCurrentIndex = (val) => {
     setCurrentIndex(val)
