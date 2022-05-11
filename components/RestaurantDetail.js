@@ -54,8 +54,8 @@ export default function RestaurantDetail() {
         <div className='font-bold text-lg tracking-wide border-b pb-4 mr-3'>Full Menu</div>
         {data.dishes.map((dish, index) => {
           return (
-            <div className='flex justify-between mt-6 border-b pb-4 mr-4 cursor-pointer' key={index}>
-              <div className='w-9/12'>
+            <div className='flex justify-between mt-6 border-b pb-4 mr-4 cursor-pointer bg-sunset-orange' key={index}>
+              <div className='w-9/12 bg-[blue]'>
                 <div className='font-bold'>{dish.name}</div>
                 <div>{`This shit's fir${'eee'.repeat(index + 1)}`}</div>
                 <div>{'$' + parseFloat(Math.random() * (30 - 10) + 10).toFixed(2)}</div>

@@ -52,7 +52,7 @@ function PageE() {
   console.log('user ', user);
 
   return (
-    <div className="h-screen w-screen block bg-dark-jungle-green">
+    <div className="h-screen w-screen block bg-[lightblue]">
       <div className="h-10">
       </div>
 
@@ -61,21 +61,16 @@ function PageE() {
           <p className="font-regular m-auto text-white text-4xl">ITS A MATCH!</p>
         </div>
         <div className="h-10 flex items-center ">
-          <p className="font-regular m-auto text-white text-1xl"> You and _____ liked ____________________ </p>
+          <p className="font-regular m-auto text-white text-1xl"> The group liked ______________! </p>
         </div>
       </div>
 
       <div className="relative border-4 border-[green] mt-[20px]">
 
-        <div className="absolute bottom-[-5px] left-[10px]">
-          <Circle user={user} />
-        </div>
 
         <Card />
 
-        <div className="absolute  bottom-[-5px] right-[10px]">
-          <Circle user={user} />
-        </div>
+
 
         <div className="absolute top-[200px] left-[158px] w-[60px] h-[40px] border-4 border-[black] bg-[grey]">
         </div>
