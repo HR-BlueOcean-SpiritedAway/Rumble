@@ -3,10 +3,16 @@ import { useState, useEffect } from 'react';
 import { useRouter} from 'next/router'
 import axios from 'axios';
 
+const { auth } = require('../firebase');
+const { useAuthState } = require('react-firebase-hooks/auth');
+
 export default function SingleRestaurant(props) {
   const router = useRouter();
   const [restaurant, setRestaurant] = useState([]);
-  // console.log('inside SingleRestaurant', router.query.name);
+  const [user, loading] = useAuthState(auth);
+
+  console.log('user is id: ', user.uid);
+
   useEffect(() => {
     async function getData(query) {
       try {
@@ -26,7 +32,7 @@ export default function SingleRestaurant(props) {
   return (
     <>
     {
-      (restaurant.length===0)? <p> loading... </p> : <RestaurantDetail restaurant={restaurant} />
+      (restaurant.length===0)? <p> loading... </p> : <RestaurantDetail user={user.uid} restaurant={restaurant} />
     }
     </>
   )

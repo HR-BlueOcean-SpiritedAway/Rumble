@@ -33,6 +33,7 @@ router.get('/test', async (req, res) => {
 // Add a favorite restaurant; POST with body { uid, restaurantID }
 router.post('/addFavorite', async (req, res) => {
   const { uid, restaurantID } = req.body;
+  console.log('inside route, uid is ', uid, ' and res id is ', restaurantID);
 
   try {
     const userDocRef = doc(db, 'users', uid);
@@ -42,7 +43,7 @@ router.post('/addFavorite', async (req, res) => {
     await updateDoc(userDocRef, { favorites });
     res.sendStatus(201);
   } catch (error) {
-    res.status(400).json({ message: 'Failed to add favorite.' })
+    res.status(400).json({ message: 'Failed to add favorite.' });
   }
 });
 
