@@ -18,7 +18,7 @@ import dislike from '../public/images/dislike.svg';
 
 //authorization
 const { auth } = require('../firebase');
-const { useAuthState } = require('react-firebase-hooks/auth')
+const { useAuthState } = require('react-firebase-hooks/auth');
 
 export default function RestaurantSwipeSolo () {
   const [currentIndex, setCurrentIndex] = useState(0)
