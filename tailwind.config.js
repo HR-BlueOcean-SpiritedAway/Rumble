@@ -35,6 +35,7 @@ module.exports = {
         bold: ['Roboto-Bold'],
         dark: ['Roboto-Black'],
         thin: ['Roboto-Light'],
+        logo: ['Bebas-Neue']
       },
     },
   },
