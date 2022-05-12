@@ -5,6 +5,8 @@ import BackButton from '../components/BackButton';
 import ProfilePhoto from '../components/ProfilePhoto';
 import Preferences from '../components/Preferences';
 import { SettingsProvider } from '../components/SettingsContext';
+import Router from 'next/router';
+import Link from 'next/link';
 import axios from 'axios';
 const { db, auth } = require('../firebase');
 const { useAuthState } = require('react-firebase-hooks/auth');
