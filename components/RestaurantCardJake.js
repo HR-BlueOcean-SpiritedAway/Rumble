@@ -29,9 +29,10 @@ function Bottom({
           <p className="font-bold">{name}</p>
           <div className="h-[20px] w-[2px] bg-white"></div>
           <p>{category} Restaurant</p>
+          <span className="hidden bg-military-green bg-flat-blue bg-moccasin"></span>
         </div>
         <div>
-          <p className="text-[.9rem]">{description}</p>
+          <p className="text-[.8rem]">{description}</p>
         </div>
         <div className="flex gap-[20px]">
           <ColoredTag colorName="military-green" text={avgCost} />
@@ -43,25 +44,27 @@ function Bottom({
   );
 }
 
-
-
-
-
-
 export default function RestaurantCard({ restaurant, clickHandler }) {
+  const { restaurantName, cuisine, description, priceRange, dishes } = restaurant;
+  const photoURL = dishes?.[0]?.photoURL || 'https://s3-media0.fl.yelpcdn.com/bphoto/-vpD8rR9-v61LpTG9tXiWg/o.jpg';
+  const rating = (Math.random() * 4 + 1).toFixed(2);
+  const deliverySpeed = ['Fast', 'Medium', 'Slow'][Math.floor(Math.random() * 3)];
+  const avgCost = Array(Math.floor(Math.random() * 4 + 1)).fill('$').join('');
+  const distance = (Math.random() * 15).toFixed(1);
+
   return(
     <div
-      className="bg-limed-spruce w-[calc(100%_-_30px)] max-w-[500px] rounded-[15px]"
+      className="bg-limed-spruce w-full max-w-[500px] rounded-[15px]"
       onClick={() => clickHandler()}
     >
-      <Top imgSrc={restaurant.imgSrc} rating={restaurant.rating}/>
+      <Top imgSrc={photoURL} rating={rating}/>
       <Bottom
-        name={restaurant.name}
-        category={restaurant.category}
-        description={restaurant.description}
-        deliverySpeed={restaurant.deliverySpeed}
-        avgCost={restaurant.avgCost}
-        distance={restaurant.distance}
+        name={restaurantName}
+        category={cuisine}
+        description={description}
+        deliverySpeed={deliverySpeed}
+        avgCost={avgCost}
+        distance={distance}
       />
     </div>
   );

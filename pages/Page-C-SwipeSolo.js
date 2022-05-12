@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import Router from 'next/router';
 import TinderCard from 'react-tinder-card';
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import axios from 'axios';
@@ -12,16 +13,21 @@ import single_user from '../public/images/single_user.svg';
 import restaurants from '../public/images/restaurants.svg';
 import list from '../public/images/list.svg';
 import addFriend from '../public/images/add_friend.svg';
-
 import like from '../public/images/heart.svg';
 import dislike from '../public/images/dislike.svg';
+
+//authorization
+const { auth } = require('../firebase');
+const { useAuthState } = require('react-firebase-hooks/auth')
 
 export default function RestaurantSwipeSolo () {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [lastDirection, setLastDirection] = useState('')
   const [favorite, setFavorite] = useState([])
   const [db, setDb] = useState([])
-
+  const [rightSwipes, setRightSwipes] = useState([]);
+  const [currentPage, setCurrentPage] = useState('');
+  const [user, loading] = useAuthState(auth);
 
   useEffect(() => {
     axios.get('/api/restaurants/test')
@@ -31,7 +37,13 @@ export default function RestaurantSwipeSolo () {
 
   useEffect(() => {
     setCurrentIndex(db.length ? db.length - 1 : 0)
-  }, [db])
+  }, [db]);
+
+  useEffect(() => {
+    if(rightSwipes.length === 3) {
+    Router.push('/Page-L-SelectedRestaurants');
+    }
+  }, [rightSwipes])
 
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex)
@@ -40,7 +52,7 @@ export default function RestaurantSwipeSolo () {
       Array(db.length)
         .fill(0)
         .map((i) => React.createRef()),
-    []
+    [db.length]
   )
 
   const updateCurrentIndex = (val) => {
@@ -52,10 +64,20 @@ export default function RestaurantSwipeSolo () {
   const canSwipe = currentIndex >= 0
 
   // set last direction and decrease current index
-  const swiped = (direction, nameToDelete, index) => {
-    setLastDirection(direction)
-    updateCurrentIndex(index - 1)
+  const swiped = (direction, nameToDelete, index, res) => {
+    if(direction === 'right') {
+      setRightSwipes((prev) => {
+        return [res].concat(prev)});
+        axios.post('/api/users/addFavorite', {
+          uid: user.uid,
+          restaurantID: res.id
+        }).catch(console.error);
+      }
+
+    setLastDirection(direction);
+    updateCurrentIndex(index - 1);
   }
+
 
   const outOfFrame = (name, idx) => {
     console.log(`${name} (${idx}) left the screen!`, currentIndexRef.current)
@@ -96,7 +118,7 @@ export default function RestaurantSwipeSolo () {
                 className='absolute'
                 key={res.restaurantName}
                 onSwipe={(dir) => {
-                  swiped(dir, res.restaurantName, index);
+                  swiped(dir, res.restaurantName, index, res);
                 }}
                 onCardLeftScreen={() => outOfFrame(res.restaurantName, index)}
               >
@@ -128,7 +150,7 @@ export default function RestaurantSwipeSolo () {
                 Swipe a card or press a button to get Restore Card button visible!
               </h2>
             )}
-        <div className="mt-[410px] flex space-x-10 justify-center">
+        <div className="absolute bottom-[80px] left-[60px] flex space-x-10 justify-center">
           <div onClick={() => swipe('left')}><Image width={30} height={30} alt="dislike" src={dislike} /></div>
           <button style={{ backgroundColor: !canGoBack && '#c3c4d3' }} onClick={() => goBack()}>Undo swipe!</button>
           <div onClick={() => swipe('right')}> <Image width={30} height={30} alt="like" src={like}/></div>

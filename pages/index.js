@@ -28,42 +28,69 @@ export default function Home() {
 
       <main>
         <h1 className="text-red-500">
-          This is the home page.
+          This is the Directory page.
         </h1>
-        <p>
-          <Link href="/example">
-            <a className="underline text-blue-500">Example link</a>
-          </Link>
-          <Link href="/restaurant">
-            <a className="underline text-blue-500">Restaurant</a>
-          </Link>
-        </p>
-        <p>
-          <Link href="/Page-G-Settings">
-            <a className="underline text-green-500">Page-G-Settings Link</a>
-          </Link>
-        </p>
-        <p>
-        <Link href="Page-C-SwipeSolo">
-          <a className="underline text-green-500"> Page-C-SwipeSolo Link</a>
-        </Link>
         <br/>
-          <Link href="/Page-E-matchGroup">
-            <a className="underline text-green-500">PageE Link</a>
-          </Link>
-        </p>
-        <Link href="/Page-L-SelectedRestaurants">
-        <a className="underline text-green-500">Page L Link</a>
-        </Link>
-        <br/>
+
         <Link href="Page-B-homepage">
           <a className="underline text-green-500"> Page B Link</a>
         </Link>
         <br/>
-        <Link href="Page-K-FavoritesPage">
-          <a className="underline text-green-500"> Page K Link</a>
+
+        <Link href="Page-C-SwipeSolo">
+          <a className="underline text-green-500"> Page-C-SwipeSolo</a>
         </Link>
         <br/>
+
+        <Link href="Page-D-SwipeGroup">
+          <a className="underline text-blue-500">Page-D-SwipeGroup[need to do] </a>
+        </Link>
+        <br/>
+
+        <Link href="/Page-E-matchGroup">
+          <a className="underline text-green-500">Page-E-matchGroup</a>
+        </Link>
+        <br/>
+
+        <Link href="Page-F-matchGroupDecision">
+          <a className="underline text-green-500">Page-F-matchGroupDecision</a>
+        </Link>
+        <br/>
+        <Link href="/Page-G-Settings">
+          <a className="underline text-green-500">Page-G-Settings</a>
+        </Link>
+        <br/>
+
+        <Link href="/Page-H-BrowseRestaurants">
+          <a className="underline text-green-500">Page-H-Browse Restaurants</a>
+        </Link>
+        <br/>
+
+        <Link href="/Page-I-Cart">
+          <a className="underline text-green-500">Page-I-Cart</a>
+        </Link>
+        <br/>
+
+        <Link href="/Page-J-Restaurant">
+          <a className="underline text-blue-500">Page-J-Restaurant</a>
+        </Link>
+        <br/>
+
+        <Link href="Page-K-FavoritesPage">
+          <a className="underline text-green-500"> Page K FavoriteRestaurants</a>
+        </Link>
+        <br/>
+
+        <Link href="/Page-L-SelectedRestaurants">
+        <a className="underline text-green-500">Page L Top Three Restaurants</a>
+        </Link>
+        <br/>
+
+        <Link href="Page-H-BrowseRestaurants">
+          <a className="underline text-green-500">Page H Link</a>
+        </Link>
+        <br/>
+            
         <button onClick={() => auth.signOut()}>Sign out</button>
       </main>
     </div>
