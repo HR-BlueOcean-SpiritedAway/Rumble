@@ -20,7 +20,7 @@ export default function SelectedRestaurant() {
   const [restaurants, setRestaurants] = useState([]);
   const [user, loading] = useAuthState(auth);
 
-  let favoritesData = [];
+  const [favoritesData, setFavoritesData] = useState([]);
 
   // pull data from database on page load
   useEffect(()=> {
@@ -34,18 +34,9 @@ export default function SelectedRestaurant() {
     }, [user.uid]);
 
     useEffect(() => {
-      if(restaurants.length > 0){
-        favoritesData = favoritesFilter(restaurants)
-      }
-    }, [])
 
-    function favoritesFilter() {
-      restaurants.filter((restaurant) => {
-        if(favorites.indexOf(restaurant.id) > 0) {
-          return true;
-        }
-      });
-    }
+    })
+
   // create restaurant card list
   const topThree = favorites.map((restaurant, index) => {
     return (
