@@ -20,7 +20,7 @@ for (let i = 0; i < 5; i++) {
 
 const topThree = arrOfRestaurants.map((restaurant, index) => {
   return (
-    <div>
+    <div key={index}>
       <RestaurantCard key={restaurant.id} restaurant={restaurant}/>
     </div>
   )

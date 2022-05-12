@@ -1,21 +1,36 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import SignOut from '../components/SignOut';
 import SaveChanges from '../components/SaveChanges';
 import BackButton from '../components/BackButton';
 import ProfilePhoto from '../components/ProfilePhoto';
 import Preferences from '../components/Preferences';
 import { SettingsProvider } from '../components/SettingsContext';
-
+import axios from 'axios';
+const { db, auth } = require('../firebase');
+const { useAuthState } = require('react-firebase-hooks/auth');
+const { doc, setDoc } = require('firebase/firestore');
 
 const Settings = () => {
-  const handleSubmit = () => {
-    console.log(cuisine, speed, price, location);
-
-  };
   const [cuisine, setCuisine] = useState('American');
   const [speed, setSpeed] = useState('Fast');
   const [price, setPrice] = useState('$');
   const [location, setLocation] = useState('San Francisco');
+
+  const createPreferences = async () => {
+
+  }
+  const [user, loading] = useAuthState(auth);
+  const handleSubmit = () => {
+    async function updateUser(user) {
+      const docRef = doc(db, 'users', user.uid);
+      console.log('user.uid: ', user.uid);
+      await setDoc(docRef, {
+        cuisinePref: cuisine,
+        priceRange: price
+      }, { merge: true })
+    }
+  };
+
 
   const handleChange = (property, event) => {
     if (property === 'Cuisine Type') {

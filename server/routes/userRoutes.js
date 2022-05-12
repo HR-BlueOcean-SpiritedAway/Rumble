@@ -23,7 +23,7 @@ router.get('/test', async (req, res) => {
     querySnapshot.forEach(doc => {
       allUsers.push(doc.data());
     });
-    
+
     res.json(allUsers);
   } catch (error) {
     res.status(400).json({ message: 'Failed to retrieve users.' });
