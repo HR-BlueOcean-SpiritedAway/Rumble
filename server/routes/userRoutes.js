@@ -60,6 +60,23 @@ router.get('/getFavorites/:uid', async(req, res) => {
   }
 })
 
+
+router.post('/addPreferences', async (req, res) => {
+  const { uid, cuisine, price } = req.body;
+
+  try {
+    const userDocRef = doc(db, 'users', uid);
+    const docSnap = await getDoc(userDocRef);
+    const cuisinePref = docSnap.data()?.cuisinePref || cuisine;
+    const priceRange = docSnap.data()?.priceRange || price;
+
+    await updateDoc(userDocRef, { cuisinePref, priceRange });
+    res.sendStatus(201);
+  } catch (error) {
+    res.status(400).json({ message: 'Failed to add preferences' })
+  }
+});
+
 // get a single user's data (for preference of cuisine and priceRange) by docID
 // dk's doc id = tEp1Vjq4EwesOESNtkGWVIDvBrf2
 router.get('/getSingleUserInfo/:uid', async(req, res) => {
