@@ -55,7 +55,7 @@ function PageE() {
   const [user, loading] = useAuthState(auth);
 
   return (
-    <div className="bg-dark-jungle-green text-white pt-[40px] pb-[40px] font-regular min-h-[100vh]">
+    <div className="absolute bg-black text-white pt-[40px] pb-[40px] font-regular min-h-[100vh] z-[999] w-[100vw] bg-opacity-70 backdrop-blur-lg	">
       <h1 className="text-[3.5rem] text-center font-logo">It&apos;s a Match!</h1>
       <p className="text-center">You and Bro G. Bear liked Wing Lum Cafe!</p>
 
