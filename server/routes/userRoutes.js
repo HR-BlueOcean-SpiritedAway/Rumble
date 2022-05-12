@@ -65,7 +65,6 @@ router.get('/getFavorites/:uid', async(req, res) => {
 router.get('/getSingleUserInfo/:uid', async(req, res) => {
   const singleUser = [];
   const uid = req.params.uid
-  console.log('uid from single user', uid)
   try {
     const q = doc(db, 'users', uid);
     const querySnapshot = await getDoc(q);
