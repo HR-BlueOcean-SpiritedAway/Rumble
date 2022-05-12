@@ -62,38 +62,19 @@ function PageE() {
     <div className="bg-dark-jungle-green text-white pt-[40px] font-regular">
       <h1 className="text-[3.5rem] text-center font-logo">It&apos;s a Match!</h1>
       <p className="text-center">You and Bro G. Bear liked Wing Lum Cafe!</p>
-      <Card title="Wing Lum Cafe" subTitle="Chinese" imgSrc={foodSrc}/>
-      {/* --------- OLD CODE BELOW --------- */}
-      <div className="relative border-4 border-[green] mt-[20px]">
 
-        <div className="absolute bottom-[-5px] left-[10px]">
-          <Circle user={user} />
-        </div>
-
-
-        <div className="absolute  bottom-[-5px] right-[10px]">
-          <Circle user={user} />
-        </div>
-
-        <div className="absolute top-[200px] left-[158px] w-[60px] h-[40px] border-4 border-[black] bg-[grey]">
-        </div>
-
-        <div className="absolute top-[310px] w-full h-[80px] text-center border-4 bg-[red]">
-          Click approve if you like this restaurant or reject if you dont.
-        </div>
-
-        <div className="absolute top-[380px] w-full h-[100px] border-4 bg-[blue]">
-
-          <button className="absolute top-[20px] left-[10px] w-[150px] h-[50px] font-semibold py-2 px-4 border border-gray-400 rounded-[20px] shadow bgz-sunset-orange text-white">
-            Approve
-          </button>
-
-          <button className="absolute top-[20px] right-[10px] w-[150px] h-[50px] font-semibold py-2 px-4 border border-gray-400 rounded-[20px] shadow bg-limed-spruce">
-            Reject
-          </button>
-
+      <div className="bg-[red] flex justify-center mt-[30px] mb-[30px]">
+        <div className="relative bg-[blue]">
+        <div className="absolute bottom-0 left-[-60px]">
+            <Circle  user={user} />
+          </div>
+          <div className="absolute bottom-0 right-[-60px]">
+            <Circle  user={user} />
+          </div>
+          <Card title="Wing Lum Cafe" subTitle="Chinese" imgSrc={foodSrc}/>
         </div>
       </div>
+
     </div>
   );
 }
