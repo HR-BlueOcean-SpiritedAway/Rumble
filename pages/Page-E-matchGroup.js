@@ -3,8 +3,9 @@ import Image from 'next/image';
 const { auth } = require('../firebase');
 const { useAuthState } = require('react-firebase-hooks/auth')
 
-const urlFood= 'https://s3-media0.fl.yelpcdn.com/bphoto/aa1NjiuCL-dAUdLxktkGmQ/o.jpg';
-const urlFood1='https://s3-media0.fl.yelpcdn.com/bphoto/vnpkrGBoVVRn0P9HrLp8xw/o.jpg';
+// Assets
+import foodSrc from '../public/images/food-img.jpg';
+
 const urlUser1= "https://images.unsplash.com/photo-1568162603664-fcd658421851?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1381&q=80"
 const urlUser2 ='https://images.unsplash.com/photo-1599948058230-78896e742f7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1382&q=80';
 
@@ -23,15 +24,21 @@ function Circle({ user }) {
   );
 }
 
-function Card () {
+function Card ({title, subTitle, imgSrc}) {
   return (
-    <div className={`relative h-[350px] w-[230px] border-[5px] border-${borderColor} rounded-[20px] overflow-hidden`}>
+    <div className={`relative h-[350px] w-[230px] border-[5px] border-${borderColor} rounded-[50px] overflow-hidden flex justify-center items-center`}>
       <Image
-        src={urlFood1}
+        src={imgSrc}
         alt=""
         layout='fill'
         objectFit='cover'
       />
+      <div className="absolute w-[100%] h-[100%] bg-gradient-to-t from-black"></div>
+      <div className="absolute w-[100%] h-[100%] bg-gradient-to-t from-black"></div>
+      <div className="relative text-center text-white">
+        <p className="font-dark text-[1.5rem]">{title}</p>
+        <p className="text-[.9rem]">{subTitle} Restaurant</p>
+      </div>
     </div>
   )
 };
@@ -55,6 +62,8 @@ function PageE() {
     <div className="bg-dark-jungle-green text-white pt-[40px] font-regular">
       <h1 className="text-[3.5rem] text-center font-logo">It&apos;s a Match!</h1>
       <p className="text-center">You and Bro G. Bear liked Wing Lum Cafe!</p>
+      <Card title="Wing Lum Cafe" subTitle="Chinese" imgSrc={foodSrc}/>
+      {/* --------- OLD CODE BELOW --------- */}
       <div className="relative border-4 border-[green] mt-[20px]">
 
         <div className="absolute bottom-[-5px] left-[10px]">
