@@ -9,12 +9,11 @@ import foodSrc from '../public/images/food-img.jpg';
 const urlUser1= "https://images.unsplash.com/photo-1568162603664-fcd658421851?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1381&q=80"
 const urlUser2 ='https://images.unsplash.com/photo-1599948058230-78896e742f7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1382&q=80';
 
-function Circle ({ user }) {
+function Circle ({ user, imgSrc }) {
   return (
   <div className="relative h-[120px] w-[120px] rounded-[50%] z-10 border-4 border-reef-gold overflow-hidden">
     <Image
-      loader={() => user.photoURL}
-      src={user.photoURL}
+      src={imgSrc}
       alt="user1"
       layout="fill"
     />
@@ -83,10 +82,10 @@ function PageE () {
             <Dot isActive={true} isUndecided={false} />
           </div>
           <div className="absolute bottom-0 left-[-60px]">
-            <Circle  user={user} />
+            <Circle imgSrc={foodSrc} />
           </div>
           <div className="absolute bottom-0 right-[-60px]">
-            <Circle  user={user} />
+            <Circle imgSrc={foodSrc} />
           </div>
           <Card title="Wing Lum Cafe" subTitle="Chinese" imgSrc={foodSrc}/>
         </div>
