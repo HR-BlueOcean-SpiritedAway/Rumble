@@ -8,12 +8,12 @@
  const { auth } = require('../firebase');
  const { useAuthState } = require('react-firebase-hooks/auth')
 
- function restaurantClickHandler(restaurant){
-   Router.push({
-     pathname: '/Page-J-Restaurant',
-     query: { name: restaurant.restaurantName}
-   }, '/Page-J-Restaurant');
- }
+  function restaurantClickHandler(restaurant){
+    Router.push({
+      pathname: '/Page-J-Restaurant',
+      query: { name: restaurant.restaurantName}
+    }, '/Page-J-Restaurant');
+  }
 
 export default function SelectedRestaurant() {
   const [favorites, setFavorites] = useState([]);
@@ -45,21 +45,12 @@ export default function SelectedRestaurant() {
       return favoritesData ? favoritesData.map((restaurant, index) => {
          return (
            <>
-             <RestaurantCard key={restaurant.id} restaurant={restaurant} />
+             <RestaurantCard key={restaurant.id} restaurant={restaurant} clickHandler={restaurantClickHandler}/>
            </>
          )
        }) : null;
    });
   }, [favoritesData])
-
-  // create restaurant card list
-  //  let topThree = favoritesData ? favoritesData.map((restaurant, index) => {
-  //   return (
-  //     <>
-  //       <RestaurantCard key={restaurant.id} restaurant={restaurant}/>
-  //     </>
-  //   )
-  // }): null;
 
   return (
     <div className="bg-auto bg-dark-jungle-green h-full flex flex-col ">
