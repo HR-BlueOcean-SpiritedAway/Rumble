@@ -4,15 +4,24 @@ import { useRouter} from 'next/router'
 import axios from 'axios';
 
 export default function SingleRestaurant(props) {
-  const router= useRouter();
+  const router = useRouter();
   const [restaurant, setRestaurant] = useState([]);
   // console.log('inside SingleRestaurant', router.query.name);
   useEffect(() => {
-    axios.get('/api/restaurants/restaurant', { params: { restaurant: router.query.name}})
-      .then((res) => {
-        setRestaurant([res.data[0]])
-      })
-      .catch(console.error);
+    async function getData(query) {
+      try {
+        if (Object.keys(query).length < 1) {
+          query = { name: 'Ragazza' };
+        }
+        let results = await axios.get('/api/restaurants/restaurant', { params: { restaurant: query.name}});
+        setRestaurant(results.data);
+      } catch(err) {
+        console.error(err);
+      }
+    }
+
+    getData(router.query);
+
   }, [router.query.name]);
   return (
     <>
