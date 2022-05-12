@@ -11,8 +11,6 @@ export default function SingleRestaurant(props) {
   const [restaurant, setRestaurant] = useState([]);
   const [user, loading] = useAuthState(auth);
 
-  console.log('user is id: ', user.uid);
-
   useEffect(() => {
     async function getData(query) {
       try {

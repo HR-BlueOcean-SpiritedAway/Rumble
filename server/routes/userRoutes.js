@@ -33,7 +33,6 @@ router.get('/test', async (req, res) => {
 // Add a favorite restaurant; POST with body { uid, restaurantID }
 router.post('/addFavorite', async (req, res) => {
   const { uid, restaurantID } = req.body;
-  console.log('inside route, uid is ', uid, ' and res id is ', restaurantID);
 
   try {
     const userDocRef = doc(db, 'users', uid);
@@ -50,7 +49,6 @@ router.post('/addFavorite', async (req, res) => {
 // Send back a list of swiped favorites for a user
 router.get('/getFavorites/:uid', async(req, res) => {
   const uid = req.params.uid
-  console.log(uid)
   try {
     const userDocRef = doc(db, 'users', uid);
     const snapshot = await getDoc(userDocRef);
