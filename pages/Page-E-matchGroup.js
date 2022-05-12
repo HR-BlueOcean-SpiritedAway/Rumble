@@ -9,11 +9,9 @@ import foodSrc from '../public/images/food-img.jpg';
 const urlUser1= "https://images.unsplash.com/photo-1568162603664-fcd658421851?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1381&q=80"
 const urlUser2 ='https://images.unsplash.com/photo-1599948058230-78896e742f7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1382&q=80';
 
-const borderColor = 'reef-gold';
-
 function Circle({ user }) {
   return (
-  <div className="relative h-[120px] w-[120px] rounded-[50%] z-10 border-4 border-sunset-orange overflow-hidden">
+  <div className="relative h-[120px] w-[120px] rounded-[50%] z-10 border-4 border-reef-gold overflow-hidden">
     <Image
       loader={() => user.photoURL}
       src={user.photoURL}
@@ -26,7 +24,7 @@ function Circle({ user }) {
 
 function Card ({title, subTitle, imgSrc}) {
   return (
-    <div className={`relative h-[350px] w-[230px] border-[5px] border-${borderColor} rounded-[50px] overflow-hidden flex justify-center items-center`}>
+    <div className="relative h-[350px] w-[230px] border-[5px] border-reef-gold rounded-[50px] overflow-hidden flex justify-center items-center">
       <Image
         src={imgSrc}
         alt=""
@@ -43,28 +41,26 @@ function Card ({title, subTitle, imgSrc}) {
   )
 };
 
-function Btn({ text, clickHandler, colorName }) {
-  const className = `w-[150px] h-[50px] font-semibold py-2 px-4 border border-gray-400 rounded-[20px] shadow bg-${colorName} text-white`;
+function Btn({ text, clickHandler, colorName, isActive }) {
+  let className = `w-[150px] h-[50px] font-bold rounded-[20px] bg-${colorName}`;
+  if (!isActive) {
+    className += ' opacity-50';
+  }
   return (
     <button className={className} onClick={() => clickHandler()}>{text}</button>
   );
 }
 
-//data needed
-// 'profile image of person1'
-// 'profile image of person2'
-// 'image url of dish both swiped on'
-
 function PageE() {
   const [user, loading] = useAuthState(auth);
 
   return (
-    <div className="bg-dark-jungle-green text-white pt-[40px] font-regular">
+    <div className="bg-dark-jungle-green text-white pt-[40px] pb-[40px] font-regular min-h-[100vh]">
       <h1 className="text-[3.5rem] text-center font-logo">It&apos;s a Match!</h1>
       <p className="text-center">You and Bro G. Bear liked Wing Lum Cafe!</p>
 
-      <div className="bg-[red] flex justify-center mt-[30px] mb-[30px]">
-        <div className="relative bg-[blue]">
+      <div className="flex justify-center mt-[30px] mb-[30px]">
+        <div className="relative">
         <div className="absolute bottom-0 left-[-60px]">
             <Circle  user={user} />
           </div>
@@ -75,6 +71,21 @@ function PageE() {
         </div>
       </div>
 
+      <p className="text-center">Doesn&apos;t look like this one&apos;s it</p>
+      <div className="mt-[40px] flex justify-center gap-5">
+        <Btn
+          text="Approve"
+          clickHandler={() => console.log('yo!')}
+          colorName="sunset-orange"
+          isActive={true}
+        />
+        <Btn
+          text="Reject"
+          clickHandler={() => console.log('yo!')}
+          colorName="star-dust-light"
+          isActive={true}
+        />
+      </div>
     </div>
   );
 }
