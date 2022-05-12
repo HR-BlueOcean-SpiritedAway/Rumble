@@ -29,7 +29,6 @@ export default function SelectedRestaurant() {
       method: 'get',
       url: `api/users/getFavorites/${user.uid}`,
     }).then((results) => {
-      console.log('from page L', results.data)
       setFavorites(results.data);
     }).catch(console.error);
     }, [user.uid]);
