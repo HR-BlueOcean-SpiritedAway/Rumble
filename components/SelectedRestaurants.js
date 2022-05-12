@@ -8,38 +8,6 @@
  const { auth } = require('../firebase');
  const { useAuthState } = require('react-firebase-hooks/auth')
 
- const arrOfRestaurants = [];
-
- for (let i = 0; i < 5; i++) {
-   const obj = {
-     id: i,
-     name: "Wing Lum Cafe",
-     restaurantName: "Wing Lum Cafe",
-     category: "Chinese",
-     description: 'description',
-     deliverySpeed: "fast",
-     avgCost: "$$$",
-     distance:"12",
-     imgSrc: foodSrc,
-     rating: "3.4",
-     dishes: [
-       {
-           photoURL: "https://s3-media0.fl.yelpcdn.com/bphoto/-vpD8rR9-v61LpTG9tXiWg/o.jpg",
-           name: "Amatriciana"
-       },
-       {
-           name: "Moto",
-           photoURL: "https://s3-media0.fl.yelpcdn.com/bphoto/9_ZCRhfIUAsj-oeXFFidkQ/o.jpg"
-       },
-       {
-           photoURL: "https://s3-media0.fl.yelpcdn.com/bphoto/yvvLJoKtaSr7z4IUvViPKg/o.jpg",
-           name: "Bianca"
-       }
-   ],
-   };
-   arrOfRestaurants.push(obj);
- };
-
  function restaurantClickHandler(restaurant){
    Router.push({
      pathname: '/Page-J-Restaurant',

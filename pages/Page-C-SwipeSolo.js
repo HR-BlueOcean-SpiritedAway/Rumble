@@ -4,7 +4,6 @@ import Router from 'next/router';
 import TinderCard from 'react-tinder-card';
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import axios from 'axios';
-import { useHistory, Redirect } from 'react-router-dom';
 
 // Below is for icons
 import setting from '../public/images/setting.svg';
