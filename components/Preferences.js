@@ -1,20 +1,18 @@
-import { useState, useEffect } from 'react';
-import Head from 'next/head';
+import { useState, useEffect, useContext } from 'react';
 import Preference from './Preference';
 
-const Preferences = () => {
+const Preferences = ({ handleChange }) => {
   const[status, setStatus] = useState(null);
   const [preference, setPreference] = useState("");
-  const [userInfo, setUserInfo]= useState("");
 
   const preferenceOptions = [
     {
       'pref': 'Cuisine Type',
-      'choice': ['Mexican', 'Korean', 'Chinese']
+      'choice': ['American', 'Chinese', 'French', 'Greek', 'Indian', 'Italian', 'Jamaican', 'Japanese', 'Korean','Mexican', 'Middle Eastern', 'Spanish', 'Thai', 'Vietnamese']
     },
     {
       'pref': 'Delivery Speed',
-      'choice': ['30 mins', '45 mins', '1 hour']
+      'choice': ['Fast', 'Less Fast']
     },
     {
       'pref':'Price Range',
@@ -22,24 +20,18 @@ const Preferences = () => {
     },
     {
       'pref': 'Location',
-      'choice': ['San Francisco', 'Not San Francisco']
+      'choice': ['San Francisco']
     }
   ]
 
-  if (status === null) {
-    console.log('status is null')
-  }
-
   return (
-    <div className="flex justify-center items-center mt-3">
-      <div className="bg-limed-spruce w-[87.7%] h-72 rounded-[14px] p-4">
-        <div>
+    <div className="flex justify-center items-center mt-3 bg-black">
+      <div className="bg-limed-spruce w-[87.7%] rounded-[14px] p-4 overflow-hidden">
         {
           preferenceOptions.map((preference, index) => {
-            return <Preference preference={preference} key={index}/>;
+            return <Preference handleChange={handleChange} preference={preference} key={index}/>;
           })
         }
-        </div>
       </div>
     </div>
   );
