@@ -42,7 +42,22 @@ function Header() {
 function Bottom(){
   return(
     <div className="relative bg-[blue] text-white h-[150px]">
-   <p>Cart</p>
+
+      <div className="absolute bottom-10 left-8 w-28 h-16 flex flex-col bg-[red]">
+        <div className='="w-full h-6 mt-4 text-m font-thin bg-[brown]'>
+        <p> Price</p>
+        </div>
+        <div className='="w-full h-12 mt-0 text-xl bg-[green]'>
+        <p> $ </p>
+        </div>
+
+      </div>
+
+
+      <div className="absolute bottom-10 right-8 w-36 h-12 bg-[green] overflow-hidden rounded-[10px]">
+       <button className="w-full h-full text-white text-xl rounded-[3px] bg-sunset-orange"> Checkout </button>
+      </div>
+
     </div>
   )
 }
@@ -59,7 +74,7 @@ function CartList({ arrOfRestaurants }) {
 
 export default function RestaurantSwipeGroup() {
   return (
-    <div className="bg-dark-jungle-green min-h-[100vh] relative">
+    <div className="bg-dark-jungle-green min-h-[100vh] font-bold relative">
       <Header/>
       <CartList arrOfRestaurants={arrOfRestaurants} />
       <Bottom/>

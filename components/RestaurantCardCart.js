@@ -33,7 +33,7 @@ function Picture({imgSrc}){
 function Description({restaurant}){
   return (
     <div className="w-[160px] h-[60px] ml-[8px] flex flex-col border-2 border-[black]">
-      <div className="w-full h-[15px] text-white text-xs border-2 border-[black]">
+      <div className="w-full h-[15px] text-white text-xs font-thin border-2 border-[black]">
       <p> {restaurant.category} food</p>
       </div>
       <div className="w-full h-[20px]">
@@ -49,8 +49,22 @@ function Description({restaurant}){
 }
 function Quantity(){
   return (
-    <div className="w-[30px] h-[60px] ml-[12px] border-2 border-[black]">
-    <p>yo yo </p>
+    <div className="w-[30px] h-[60px] ml-[12px] flex justify-center relative border-2 border-[black]">
+
+      <div className="w-5 h-5 bg-[blue] flex justify-center">
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm-6.5 10h13v1h-13v-1z"/></svg>
+      </div>
+
+      <div className="w-5 h-4 absolute top-[19px] bg-[red] flex justify-center ">
+        <p className="text-xs mb-[0px] bg-[blue]"> 9</p>
+      </div>
+
+      <div className="w-5 h-5 bg-[blue] absolute bottom-[0px] flex justify-center">
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm.5 10h6v1h-6v6h-1v-6h-6v-1h6v-6h1v6z"/></svg>
+      </div>
+
+
+
     </div>
   )
 }
