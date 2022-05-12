@@ -1,5 +1,4 @@
 import React from 'react';
-import { useChange, useUpdateChange } from './SettingsContext';
 
 const SaveChanges = ({handleSubmit}) => {
   const element = null;

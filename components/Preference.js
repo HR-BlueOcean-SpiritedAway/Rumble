@@ -9,9 +9,6 @@ const Preference = (props) => {
   const changeValue = useUpdateChange();
   const { handleChange } = props;
 
-
-  console.log('selectedPreference: ', selectedPreference);
-  console.log('selectedChoice: ', selectedChoice);
   const changeHandler = (event) => {
     if (selectedPreference === null) {
       console.log('event.target.value: ', event.target.value);
@@ -20,7 +17,6 @@ const Preference = (props) => {
   };
 
   const selectionHandler = (event) => {
-    console.log(event.target.value)
     setSelectedChoice(event.target.value);
     setSelectedPreference(null);
   }

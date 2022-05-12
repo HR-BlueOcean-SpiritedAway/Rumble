@@ -11,24 +11,25 @@ const { useAuthState } = require('react-firebase-hooks/auth');
 const { doc, setDoc } = require('firebase/firestore');
 
 const Settings = () => {
-  const [cuisine, setCuisine] = useState('American');
+  const [cuisine, setCuisine] = useState('All');
   const [speed, setSpeed] = useState('Fast');
   const [price, setPrice] = useState('$');
   const [location, setLocation] = useState('San Francisco');
 
-  const createPreferences = async () => {
-
-  }
   const [user, loading] = useAuthState(auth);
+
   const handleSubmit = () => {
-    async function updateUser(user) {
-      const docRef = doc(db, 'users', user.uid);
-      console.log('user.uid: ', user.uid);
-      await setDoc(docRef, {
-        cuisinePref: cuisine,
-        priceRange: price
-      }, { merge: true })
-    }
+    axios.post('/api/users/addPreferences', {
+      uid: user.uid,
+      cuisine: cuisine,
+      price: price
+    })
+    .then((response) => {
+      console.log('Successful post');
+    })
+    .catch((err) => {
+      console.error('axios.post error: ', err);
+    })
   };
 
 

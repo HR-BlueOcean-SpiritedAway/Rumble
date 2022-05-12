@@ -2,13 +2,11 @@ import { useState, useEffect, useContext } from 'react';
 import Preference from './Preference';
 
 const Preferences = ({ handleChange }) => {
-  const[status, setStatus] = useState(null);
-  const [preference, setPreference] = useState("");
 
   const preferenceOptions = [
     {
       'pref': 'Cuisine Type',
-      'choice': ['American', 'Chinese', 'French', 'Greek', 'Indian', 'Italian', 'Jamaican', 'Japanese', 'Korean','Mexican', 'Middle Eastern', 'Spanish', 'Thai', 'Vietnamese']
+      'choice': ['All', 'American', 'Chinese', 'French', 'Greek', 'Indian', 'Italian', 'Jamaican', 'Japanese', 'Korean','Mexican', 'Middle Eastern', 'Spanish', 'Thai', 'Vietnamese']
     },
     {
       'pref': 'Delivery Speed',
