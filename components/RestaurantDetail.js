@@ -21,9 +21,10 @@ export default function RestaurantDetail({ restaurant, user }) {
   function heartButtonClick(){
     if (!isActive) {
       setIsActive((prev)=>!prev);
-      axios.post('http://localhost:8080/api/users/addFavorite', { uid: user, restaurantID: restaurant.id }).catch(console.error());
+      axios.post('/api/users/addFavorite', { uid: user, restaurantID: restaurant.id }).catch(console.error());
     } else {
       setIsActive((prev)=>!prev);
+      axios.delete('/api/users/deleteFavorite', { params: { uid: user, restaurantID: restaurant.id }}).catch(console.error());
     }
   }
 

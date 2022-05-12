@@ -46,6 +46,21 @@ router.post('/addFavorite', async (req, res) => {
   }
 });
 
+// Remove a favorite restaurant; DELETE with body { uid, restaurantID }
+router.delete('/deleteFavorite', async (req, res) => {
+  const { uid, restaurantID } = req.query;
+  try {
+    const userDocRef = doc(db, 'users', uid);
+    const docSnap = await getDoc(userDocRef);
+    const pastFavorites = docSnap.data()?.favorites || [];
+    const favorites = pastFavorites.filter((id) => id !== Number(restaurantID));
+    await updateDoc(userDocRef, { favorites });
+    res.sendStatus(200);
+  } catch (err) {
+    res.status(400).json({ message: 'Failed to delete from favorites'});
+  }
+});
+
 // Send back a list of swiped favorites for a user
 router.get('/getFavorites/:uid', async(req, res) => {
   const uid = req.params.uid
