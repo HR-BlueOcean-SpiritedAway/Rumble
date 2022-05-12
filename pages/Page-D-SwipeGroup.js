@@ -9,7 +9,7 @@ import axios from 'axios';
 import setting from '../public/images/setting.svg';
 import logo_white from '../public/images/Rumble_white.svg';
 import cart from '../public/images/cart.svg';
-import single_user from '../public/images/single_user.svg';
+import group_user from '../public/images/group_user.svg';
 import restaurants from '../public/images/restaurants.svg';
 import list from '../public/images/list.svg';
 import addFriend from '../public/images/add_friend.svg';
@@ -32,33 +32,13 @@ export default function RestaurantSwipeSolo () {
   const [currentPage, setCurrentPage] = useState('');
   const [user, loading] = useAuthState(auth);
 
-  const [userPref, setUserPref] = useState([]);
-
-
-  useEffect(() => {
-    axios.get(`/api/users/getSingleUserInfo/${user.uid}`)
-    .then(({data}) => {
-      console.log('data from users db', data)
-      const { cuisinePref, priceRange } = data;
-      setUserPref({ cuisinePref, priceRange })
-    })
-    .catch(console.error)
-  }, []);
 
   useEffect(() => {
     axios.get('/api/restaurants/test')
-      .then(({ data }) => {
-      setDb(filterRes(data, userPref))})
-      .catch(console.error)
-  }, [userPref]);
-
-  const filterRes = (array, obj) => {
-    let filtered = array.filter(
-      element => element.cuisine === obj.cuisinePref
-      && element.priceRange === obj.priceRange
-    )
-    return filtered;
-  }
+    .then(({ data }) => {
+     setDb(data.slice(0,12))})
+    .catch(console.error)
+  }, []);
 
   useEffect(() => {
     setCurrentIndex(db.length ? db.length - 1 : 0)
@@ -66,7 +46,7 @@ export default function RestaurantSwipeSolo () {
 
   useEffect(() => {
     if(rightSwipes.length === 3) {
-    Router.push('/Page-L-SelectedRestaurants');
+    Router.push('/Page-E-matchGroup');
     }
   }, [rightSwipes])
 
@@ -134,7 +114,7 @@ export default function RestaurantSwipeSolo () {
           <Image width={30} height={30} alt="setting" src={setting}/>
         </Link>
           <Image width={105} height={40} alt="white logo" src={logo_white}/>
-          <Image width={30} height={30} alt="single user" src={single_user}/>
+          <Image width={30} height={30} alt="group user" src={group_user}/>
       </div>
       <div className="container">
             {db.length === 0 ? null : db.map((res, index) => (
@@ -167,7 +147,7 @@ export default function RestaurantSwipeSolo () {
               </TinderCard>
             ))}
 
-        <div className="absolute bottom-[80px] left-[125px] flex space-x-[3rem]">
+      <div className="absolute bottom-[80px] left-[125px] flex space-x-[3rem]">
           <div className="bg-white w-[40px] h-[40px] rounded-[30px] grid items-center" onClick={() => swipe('left')}>
             <Image width={30} height={30} alt="dislike" src={dislike} />
           </div>
