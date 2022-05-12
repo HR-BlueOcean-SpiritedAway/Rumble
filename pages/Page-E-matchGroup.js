@@ -9,7 +9,7 @@ import foodSrc from '../public/images/food-img.jpg';
 const urlUser1= "https://images.unsplash.com/photo-1568162603664-fcd658421851?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1381&q=80"
 const urlUser2 ='https://images.unsplash.com/photo-1599948058230-78896e742f7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1382&q=80';
 
-function Circle({ user }) {
+function Circle ({ user }) {
   return (
   <div className="relative h-[120px] w-[120px] rounded-[50%] z-10 border-4 border-reef-gold overflow-hidden">
     <Image
@@ -41,7 +41,7 @@ function Card ({title, subTitle, imgSrc}) {
   )
 };
 
-function Btn({ text, clickHandler, colorName, isActive }) {
+function Btn ({ text, clickHandler, colorName, isActive }) {
   let className = `w-[150px] h-[50px] font-bold rounded-[20px] bg-${colorName}`;
   if (!isActive) {
     className += ' opacity-50';
@@ -51,7 +51,24 @@ function Btn({ text, clickHandler, colorName, isActive }) {
   );
 }
 
-function PageE() {
+function Dot ({ isActive, isUndecided }) {
+  let className = "h-4 w-4 rounded-full";
+  if (isActive) {
+    className += " bg-sunset-orange";
+  } else {
+    className += " bg-star-dust-light"
+  }
+
+  if (isUndecided) {
+    className += " opacity-50";
+  }
+
+  return (
+    <div className={className}></div>
+  );
+}
+
+function PageE () {
   const [user, loading] = useAuthState(auth);
 
   return (
@@ -61,7 +78,11 @@ function PageE() {
 
       <div className="flex justify-center mt-[30px] mb-[30px]">
         <div className="relative">
-        <div className="absolute bottom-0 left-[-60px]">
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-[-85px] z-[999] flex gap-2">
+            <Dot isActive={true} isUndecided={false} />
+            <Dot isActive={true} isUndecided={false} />
+          </div>
+          <div className="absolute bottom-0 left-[-60px]">
             <Circle  user={user} />
           </div>
           <div className="absolute bottom-0 right-[-60px]">
