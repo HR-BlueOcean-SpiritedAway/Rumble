@@ -8,6 +8,8 @@ const urlFood1='https://s3-media0.fl.yelpcdn.com/bphoto/vnpkrGBoVVRn0P9HrLp8xw/o
 const urlUser1= "https://images.unsplash.com/photo-1568162603664-fcd658421851?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1381&q=80"
 const urlUser2 ='https://images.unsplash.com/photo-1599948058230-78896e742f7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1382&q=80';
 
+const borderColor = 'reef-gold';
+
 function Circle({ user }) {
   return (
   <div className="relative h-[120px] w-[120px] rounded-[50%] z-10 border-4 border-sunset-orange overflow-hidden">
@@ -23,14 +25,12 @@ function Circle({ user }) {
 
 function Card () {
   return (
-    <div className="relative left-[60px] h-[300px] w-[240px] border-4 border-[yellow]">
+    <div className={`relative h-[350px] w-[230px] border-[5px] border-${borderColor} rounded-[20px] overflow-hidden`}>
       <Image
-        loader={() => urlFood1}
         src={urlFood1}
-        alt="matchedDish"
+        alt=""
         layout='fill'
-        objectFit='contain'
-        className="rounded-lg z-8"
+        objectFit='cover'
       />
     </div>
   )
@@ -52,26 +52,15 @@ function PageE() {
   const [user, loading] = useAuthState(auth);
 
   return (
-    <div className="h-screen w-screen block bg-dark-jungle-green">
-      <div className="h-10">
-      </div>
-
-      <div className="h-24 ">
-        <div className="h-10 flex items-center">
-          <p className="font-regular m-auto text-white text-4xl">ITS A MATCH!</p>
-        </div>
-        <div className="h-10 flex items-center ">
-          <p className="font-regular m-auto text-white text-1xl"> You and _____ liked ____________________ </p>
-        </div>
-      </div>
-
+    <div className="bg-dark-jungle-green text-white pt-[40px] font-regular">
+      <h1 className="text-[3.5rem] text-center font-logo">It&apos;s a Match!</h1>
+      <p className="text-center">You and Bro G. Bear liked Wing Lum Cafe!</p>
       <div className="relative border-4 border-[green] mt-[20px]">
 
         <div className="absolute bottom-[-5px] left-[10px]">
           <Circle user={user} />
         </div>
 
-        <Card />
 
         <div className="absolute  bottom-[-5px] right-[10px]">
           <Circle user={user} />
