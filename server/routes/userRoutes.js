@@ -1,5 +1,5 @@
 const { db } = require('../../firebase');
-const { collection, query, doc, getDocs, getDoc, updateDoc } = require('firebase/firestore');
+const { collection, query, doc, getDocs, getDoc, updateDoc, where } = require('firebase/firestore');
 
 const router = require('express').Router();
 
@@ -60,6 +60,7 @@ router.get('/getFavorites/:uid', async(req, res) => {
   }
 })
 
+
 router.post('/addPreferences', async (req, res) => {
   const { uid, cuisine, price } = req.body;
 
@@ -75,5 +76,19 @@ router.post('/addPreferences', async (req, res) => {
     res.status(400).json({ message: 'Failed to add preferences' })
   }
 });
+
+// get a single user's data (for preference of cuisine and priceRange) by docID
+// dk's doc id = tEp1Vjq4EwesOESNtkGWVIDvBrf2
+router.get('/getSingleUserInfo/:uid', async(req, res) => {
+  const singleUser = [];
+  const uid = req.params.uid
+  try {
+    const q = doc(db, 'users', uid);
+    const querySnapshot = await getDoc(q);
+    res.json(querySnapshot.data())
+  } catch (error) {
+    res.status(400).json({ message: 'Failed to retrieve info of single user.' });
+  }
+})
 
 module.exports = router;
