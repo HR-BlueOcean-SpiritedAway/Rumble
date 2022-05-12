@@ -61,4 +61,9 @@
     font-family: 'Roboto-Black';
     src: url('../assets/fonts/Roboto/Roboto-Black.ttf') format('truetype');
   }
+
+  @font-face {
+    font-family: 'Bebas-Neue';
+    src: url('../assets/fonts/Bebas_Neue/BebasNeue-Regular.ttf') format('truetype');
+  }
 };
