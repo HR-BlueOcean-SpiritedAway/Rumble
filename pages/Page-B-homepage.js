@@ -1,12 +1,19 @@
 import Link from 'next/link';
+const { useAuthState } = require('react-firebase-hooks/auth');
+import { useEffect} from 'react';
+
+const { auth } = require('../firebase');
+import Router from 'next/router';
 
 function Homepage() {
 
-  // let navigate = useNavigate();
-  // const routeChange = (event) => {
-  //   let path = event.target.id;
-  //   navigate(path);
-  // }
+  const [user, loading] = useAuthState(auth);
+
+  useEffect(()=>{
+    if (user){
+      Router.push('/Page-G-Settings');
+    }
+  },[user])
 
   return (
 

@@ -22,7 +22,7 @@ function Description({name}){
         <p> {name}</p>
       </div>
       <div className="ml-[-3px] w-full h-[20px] flex ">
-        <svg className='mt-[8px] pl-1 pb-1 fill-[#A38022]'  width="15" height="15" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
+        <svg className='mt-[8px] pl-1 pb-1 fill-reef-gold'  width="15" height="15" viewBox="0 0 24 24"><path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/></svg>
         <p className=' mt-[3px] ml-[3px] text-sm text-white'> {Number.parseFloat(Math.random()*(4.50-3.30)+(3.30)).toFixed(2)} </p>
       </div>
 
@@ -37,7 +37,7 @@ function PriceCart(){
         <p >${Number.parseFloat(prices[Math.floor(Math.random() * (21 - 0 + 1) + 0)]).toFixed(2)}</p>
       </div>
       <div className="w-full h-[30px] flex items-end flex-row-reverse mt-[-10px]">
-        <button className="w-[60px] h-[20px] text-white text-xs rounded-[3px] bg-[#FC6265]"> Add Cart </button>
+        <button className="w-[60px] h-[20px] text-white text-xs rounded-[3px] bg-sunset-orange"> Add Cart </button>
       </div>
     </div>
   )
@@ -47,7 +47,7 @@ export default function DishCardCart({ dish}) {
 
   return(
     <div
-      className="w-full h-[100px] rounded-[15px] mb-[10px]  bg-[#38474F] flex items-center	"
+      className="w-full h-[100px] rounded-[15px] mb-[10px]  bg-limed-spruce flex items-center	"
     >
       <Picture imgSrc={dish.photoURL}></Picture>
       <Description name={dish.name}></Description>
