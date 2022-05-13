@@ -12,10 +12,8 @@ export default function RestaurantDetail({ restaurant, user }) {
   const btnContInActive = "absolute flex justify-center items-center top-3 right-3 w-8 h-8 rounded-full bg-limed-spruce pt-1 pb-1 pr-2 pl-2 cursor-pointer";
   const btnContActive = "absolute flex justify-center items-center top-3 right-3 w-8 h-8 rounded-full bg-sunset-orange pt-1 pb-1 pr-2 pl-2 cursor-pointer";
 
-  function backButtonClick(){
-    Router.push({
-      pathname: '/Page-L-SelectedRestaurants',
-    }, '/Page-L-SelectedRestaurants');
+  function backButtonClick() {
+    Router.back();
   }
 
   function heartButtonClick(){
