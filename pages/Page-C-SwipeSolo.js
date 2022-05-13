@@ -130,7 +130,7 @@ export default function RestaurantSwipeSolo () {
           >
             <div
               style={{ backgroundImage: `url(${res?.dishes?.[0]?.photoURL}`  }}
-              className="bg-gradient-to-t from-black relative bg-cover bg-center 
+              className="bg-gradient-to-t from-black relative bg-cover bg-center
                         w-[360px] h-[65vh] rounded-[30px] flex flex-col justify-end"
             >
               <h3 className="text-center text-white text-[2.25rem] font-bold">
@@ -160,7 +160,7 @@ export default function RestaurantSwipeSolo () {
         {/* Like/Dislike Icons */}
         <div className="absolute bottom-[80px] w-[360px] flex justify-evenly">
           {/* Dislike Icon */}
-          <div 
+          <div
             className="bg-white w-[40px] h-[40px] rounded-[30px] grid items-center"
             onClick={() => swipe('left')}
           >
