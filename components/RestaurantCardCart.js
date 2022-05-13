@@ -8,9 +8,7 @@ import Router from 'next/router';
 
 function Checkbox(){
   const [checked, setChecked] = useState(true);
-  // console.log('fn Checkbox, checked is', checked);
   function checkboxHandler(){
-    // console.log('checkbox clicked');
     setChecked(prevState => !prevState);
   }
   return (
@@ -53,7 +51,7 @@ function Quantity(){
     <div className="w-[30px] h-[60px] ml-[12px] flex justify-center relative">
 
       <div className="w-5 h-5 flex justify-center">
-        <svg className="h-4 w-4" viewBox="0 0 24 24" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm-6.5 10h13v1h-13v-1z"/></svg>
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fillRule="evenodd" clipRule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm-6.5 10h13v1h-13v-1z"/></svg>
       </div>
 
       <div className="w-5 h-4 absolute top-[19px] flex justify-center ">
@@ -61,7 +59,7 @@ function Quantity(){
       </div>
 
       <div className="w-5 h-5 absolute bottom-[0px] flex justify-center">
-        <svg className="h-4 w-4" viewBox="0 0 24 24" fill-rule="evenodd" clip-rule="evenodd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm.5 10h6v1h-6v6h-1v-6h-6v-1h6v-6h1v6z"/></svg>
+        <svg className="h-4 w-4" viewBox="0 0 24 24" fillRule="evenodd" clipRule="evenOdd"><path d="M11.5 0c6.347 0 11.5 5.153 11.5 11.5s-5.153 11.5-11.5 11.5-11.5-5.153-11.5-11.5 5.153-11.5 11.5-11.5zm0 1c5.795 0 10.5 4.705 10.5 10.5s-4.705 10.5-10.5 10.5-10.5-4.705-10.5-10.5 4.705-10.5 10.5-10.5zm.5 10h6v1h-6v6h-1v-6h-6v-1h6v-6h1v6z"/></svg>
       </div>
 
     </div>

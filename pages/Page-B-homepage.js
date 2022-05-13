@@ -7,11 +7,6 @@ import Router from 'next/router';
 
 function Homepage() {
 
-  // let navigate = useNavigate();
-  // const routeChange = (event) => {
-  //   let path = event.target.id;
-  //   navigate(path);
-  // }
   const [user, loading] = useAuthState(auth);
 
   useEffect(()=>{
