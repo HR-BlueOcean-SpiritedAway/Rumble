@@ -63,6 +63,7 @@ export default function RestaurantSwipeSolo () {
     axios.get('/api/restaurants/test')
       .then(({ data }) => {
         const filteredRestaurants = filterRestaurants(data, userPref);
+        filteredRestaurants.sort((a, b) => 0.5 - Math.random());
         setRestaurants(filteredRestaurants);
         setCurrentIndex(Math.max(filteredRestaurants.length - 1, 0))
       })
@@ -77,7 +78,7 @@ export default function RestaurantSwipeSolo () {
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex)
   const childRefs = useMemo(
-    () => Array(restaurants.length).fill(0).map(_ => (React.createRef())), 
+    () => Array(restaurants.length).fill(0).map(_ => (React.createRef())),
     [restaurants.length]
   );
 
