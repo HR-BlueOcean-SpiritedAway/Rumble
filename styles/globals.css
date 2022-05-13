@@ -14,13 +14,13 @@
 .toggle-switch .switch {
   position: absolute;
   cursor: pointer;
-  background-color: #A48111;
+  background-color: #37474F;
   border-radius: 25px;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  transition: background-color 0.4s ease;
+  transition: background-color 0.3s ease;
 }
 .toggle-switch .switch::before {
   position: absolute;
