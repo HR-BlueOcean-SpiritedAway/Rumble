@@ -77,7 +77,7 @@ export default function RestaurantSwipeSolo () {
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex)
   const childRefs = useMemo(
-    () => Array(restaurants.length).fill(React.createRef()), 
+    () => Array(restaurants.length).fill(0).map(_ => (React.createRef())), 
     [restaurants.length]
   );
 
@@ -96,7 +96,11 @@ export default function RestaurantSwipeSolo () {
   // Programatically swipe on current card
   const swipe = async (direction) => {
     if ((currentIndex >= 0) && (currentIndex < restaurants.length)) {
-      await childRefs[currentIndex].current.swipe(direction);
+      try {
+        await childRefs[currentIndex].current.swipe(direction);
+      } catch {
+        ;
+      }
     }
   }
 
