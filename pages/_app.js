@@ -19,8 +19,7 @@ async function updateUser(user) {
     email: user.email,
     displayName: user.displayName,
     photoURL: user.photoURL,
-    lastSeen: new Date(),
-    favorites: []
+    lastSeen: new Date()
   }, { merge: true })
 }
 
