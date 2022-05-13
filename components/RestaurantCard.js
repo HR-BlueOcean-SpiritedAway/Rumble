@@ -8,7 +8,7 @@ import ColoredTag from '../components/ColoredTag';
 
 function Top({ imgSrc, rating }) {
   return(
-    <div className="relative h-[180px] w-[100%]">
+    <div className="relative h-[180px] w-full">
       <Image className="rounded-[15px]"layout="fill" objectFit="cover" src={imgSrc} alt="" />
       <div className="absolute right-[15px] top-[10px]">
         <HeartBtn isActive={true} clickHandler={() => console.log(false)}/>
@@ -24,7 +24,7 @@ function Bottom({
   name, category, description, avgCost, distance, deliverySpeed,
 }) {
   return(
-    <div className="relative pl-[15px] pt-[20px] pb-[20px] pr-[15px] text-white">
+    <div className="relative px-[15px] py-[20px] text-white">
       <div className="flex flex-col gap-[15px] ">
         <div className="flex gap-[10px] items-center">
           <p className="font-bold">{name}</p>
@@ -44,8 +44,6 @@ function Bottom({
   );
 }
 
-
-
 export default function RestaurantCard({ restaurant, clickHandler }) {
   // function clickHandler(e) {
   //   const name=e.target.name;
@@ -53,7 +51,8 @@ export default function RestaurantCard({ restaurant, clickHandler }) {
   // }
   return(
     <div
-      className="bg-limed-spruce w-[calc(100%_-_30px)] max-w-[500px] rounded-[15px]"
+      className="bg-limed-spruce w-[calc(100%_-_30px)] max-w-[500px] rounded-[15px]
+                  grid items-center justify-items-center"
       onClick={() => clickHandler(restaurant)}
     >
       <Top imgSrc={restaurant.dishes[0].photoURL} rating={4}/>
@@ -61,9 +60,9 @@ export default function RestaurantCard({ restaurant, clickHandler }) {
         name={restaurant.restaurantName}
         category={restaurant.category}
         description={restaurant.description}
-        deliverySpeed={(Math.floor(Math.random()*(60-15+1)+15)).toString() + ' mins'}
+        deliverySpeed={(Math.floor(Math.random()*(46)+15)).toString() + ' mins'}
         avgCost={restaurant.priceRange}
-        distance={(Math.floor(Math.random()*(9-1+1)+1)).toString()}
+        distance={(Math.floor(Math.random()*(9)+1)).toString()}
       />
     </div>
   );
