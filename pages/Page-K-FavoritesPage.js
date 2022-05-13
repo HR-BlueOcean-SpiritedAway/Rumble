@@ -1,5 +1,11 @@
 import Image from 'next/image';
 import Router from 'next/router';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
+// Authorization
+const { auth } = require('../firebase');
+const { useAuthState } = require('react-firebase-hooks/auth')
 
 // Components
 import BackBtn from '../components/Backbtn';
@@ -9,6 +15,7 @@ import RestaurantCard from '../components/RestaurantCard';
 import breakfastSrc from '../public/images/breakfast-img.svg';
 import foodSrc from '../public/images/food-img.jpg';
 import { v4 as uuid } from 'uuid';
+import useFavorites from '../hooks/useFavorites';
 
 
 function goBackPageC(){
@@ -69,10 +76,11 @@ function List({ arrOfRestaurants }) {
 }
 
 export default function FavoritesPage() {
+  const [ favoritesData ] = useFavorites();
   return (
     <div className="bg-dark-jungle-green min-h-[100vh]">
       <Header />
-      <List arrOfRestaurants={arrOfRestaurants} />
+      <List arrOfRestaurants={favoritesData} />
     </div>
   );
 }

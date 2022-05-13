@@ -45,10 +45,6 @@ function Bottom({
 }
 
 export default function RestaurantCard({ restaurant, clickHandler }) {
-  // function clickHandler(e) {
-  //   const name=e.target.name;
-  //   Router.push()
-  // }
   return(
     <div
       className="bg-limed-spruce w-[calc(100%_-_30px)] max-w-[500px] rounded-[15px]
