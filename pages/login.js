@@ -8,12 +8,13 @@ function signIn() {
 export default function Login() {
   return (
 
-    <div className="h-screen w-screen block bg-cover bg-center bg-[url('https://cdn.discordapp.com/attachments/972245664073404427/972270519464378399/people-eating.jpg')]">
-      <div className="h-screen bg-gradient-to-t from-black">
-      <div className="px-10 py-64 w-screen">
-      <img className="py-0" src='https://cdn.discordapp.com/attachments/972245664073404427/972262432770773072/Rumble_1.png'/>
-        <h2 className=" text-white text-4xl font-semibold"> Lorem Ipsum et sotoro</h2>
-        <div className="py-5 text-star-dust-light text-sm font-light"> Lorem Ipsum set dolor amet something </div>
+    <div className="h-screen w-screen grid items-center bg-cover bg-center
+                    bg-[url('https://cdn.discordapp.com/attachments/972245664073404427/972270519464378399/people-eating.jpg')]">
+      <div className="h-screen w-screen grid items-center bg-gradient-to-t from-black">
+        <div className="px-10 py-64 w-screen grid items-center justify-items-center">
+          <img className="py-0" src='https://cdn.discordapp.com/attachments/972245664073404427/972262432770773072/Rumble_1.png'/>
+          <h2 className=" text-white text-4xl font-semibold"> Lorem Ipsum et sotoro</h2>
+          <div className="py-5 text-star-dust-light text-sm font-light"> Lorem Ipsum set dolor amet something </div>
           <div className=" w-80">
             {/* <Link href="/login"> */}
             <button
