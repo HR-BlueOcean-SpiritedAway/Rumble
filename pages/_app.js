@@ -7,6 +7,7 @@ import '../styles/globals.css'
 import Login from './login';
 import Loading from './loading'
 
+
 const { db, auth } = require('../firebase');
 const { useAuthState } = require('react-firebase-hooks/auth')
 const { doc, setDoc } = require('firebase/firestore');
@@ -30,7 +31,7 @@ function MyApp({ Component, pageProps }) {
   }, [user]);
 
   if (loading) return <Loading />
-  if (!user) return <Login />
+  if (!user) return <Login/>
 
   return <Component {...pageProps} />
 }
