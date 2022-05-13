@@ -44,21 +44,21 @@ export default function SelectedRestaurant() {
     setCards(() => {
       return favoritesData ? favoritesData.map((restaurant, index) => {
          return (
-           <>
+           <div className="grid items-center justify-items-center">
              <RestaurantCard key={restaurant.id} restaurant={restaurant} clickHandler={restaurantClickHandler}/>
-           </>
+           </div>
          )
        }) : null;
    });
   }, [favoritesData])
 
   return (
-    <div className="bg-auto bg-dark-jungle-green h-full flex flex-col ">
+    <div className="bg-auto bg-dark-jungle-green h-full min-h-screen flex flex-col ">
       <div className="h-24 rounded-b-[3.5rem] bg-reef-gold text-5xl text-center font-bold text-white">
         <div className="py-5">Top Picks</div>
       </div>
       <div className="py-4 space-x-4 text-xl font-extralight text-center text-white">Choose your top restaurant</div>
-      <div className="flex-col justify-center self-center space-y-1">{cards}</div>
+      <div className="flex-col justify-center self-center space-y-2 w-fit">{cards}</div>
       <div className="flex place-content-center items-end font-extralight text-l text-center text-white" >Keep swiping</div>
     </div>
   )
