@@ -1,7 +1,10 @@
 import Link from 'next/link';
+import { useRouter } from "next/router";
 import Image from 'next/image';
 const { auth } = require('../firebase');
 const { useAuthState } = require('react-firebase-hooks/auth')
+import { useEffect , useState} from 'react';
+import axios from 'axios';
 
 // Assets
 import foodSrc from '../public/images/food-img.jpg';
@@ -69,11 +72,27 @@ function Dot ({ isActive, isUndecided }) {
 
 function PageE () {
   const [user, loading] = useAuthState(auth);
+  const { query } = useRouter();
+  const [restaurantName, setRestaurantName] = useState([])
+  const [restaurantCuisine, setRestaurantCuisine] = useState('Chinese')
+  const [restaurantDish, setRestaurantDish] = useState(foodSrc);
+
+  useEffect(()=>{
+    axios.get('api/restaurants/test')
+      .then(({data})=>{
+        let filteredRestaurant = data.filter((restaurant)=> restaurant.id === parseInt(query.restaurant_id));
+        setRestaurantName(filteredRestaurant[0].restaurantName || 'Wing Lum Cafe');
+        setRestaurantCuisine(filteredRestaurant[0].cuisine || 'Chinese');
+        setRestaurantDish(filteredRestaurant[0].dishes[0].photoURL || foodSrc);
+        console.log(user.photoURL);
+      })
+
+  }, [query.restaurant_id, user]);
 
   return (
     <div className="absolute bg-black text-white pt-[40px] pb-[40px] font-regular min-h-[100vh] z-[999] w-[100vw] bg-opacity-70 backdrop-blur-lg	">
       <h1 className="text-[3.5rem] text-center font-logo">It&apos;s a Match!</h1>
-      <p className="text-center">You and Bro G. Bear liked Wing Lum Cafe!</p>
+      <p className="text-center">You and Bro liked {restaurantName} !</p>
 
       <div className="flex justify-center mt-[30px] mb-[30px]">
         <div className="relative">
@@ -87,11 +106,11 @@ function PageE () {
           <div className="absolute bottom-0 right-[-60px]">
             <Circle imgSrc={foodSrc} />
           </div>
-          <Card title="Wing Lum Cafe" subTitle="Chinese" imgSrc={foodSrc}/>
+          <Card title={restaurantName} subTitle={restaurantCuisine} imgSrc={restaurantDish}/>
         </div>
       </div>
 
-      <p className="text-center">Doesn&apos;t look like this one&apos;s it</p>
+      <p className="text-center"> Looks like this ones it! </p>
       <div className="mt-[40px] flex justify-center gap-5">
         <Btn
           text="Approve"
