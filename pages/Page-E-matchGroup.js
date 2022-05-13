@@ -84,7 +84,6 @@ function PageE () {
         setRestaurantName(filteredRestaurant[0].restaurantName || 'Wing Lum Cafe');
         setRestaurantCuisine(filteredRestaurant[0].cuisine || 'Chinese');
         setRestaurantDish(filteredRestaurant[0].dishes[0].photoURL || foodSrc);
-        console.log(user.photoURL);
       })
 
   }, [query.restaurant_id, user]);
