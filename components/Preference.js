@@ -11,7 +11,6 @@ const Preference = (props) => {
 
   const changeHandler = (event) => {
     if (selectedPreference === null) {
-      console.log('event.target.value: ', event.target.value);
       setSelectedPreference(event.target.value);
     }
   };
