@@ -1,24 +1,17 @@
-import Link from 'next/link';
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import Image from 'next/image';
 const { auth } = require('../firebase');
 const { useAuthState } = require('react-firebase-hooks/auth')
 import { useEffect , useState} from 'react';
 import axios from 'axios';
 
-// Assets
-import foodSrc from '../public/images/food-img.jpg';
-
-const urlUser1= "https://images.unsplash.com/photo-1568162603664-fcd658421851?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1381&q=80"
-const urlUser2 ='https://images.unsplash.com/photo-1599948058230-78896e742f7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1382&q=80';
-
-function Circle ({ user, imgSrc }) {
+function Circle ({ imgSrc }) {
   return (
   <div className="relative h-[120px] w-[120px] rounded-[50%] z-10 border-4 border-reef-gold overflow-hidden">
-    <Image
+    <img
+      className="rounded-full h-full w-full grid items-center justify-content-center"
       src={imgSrc}
       alt="user1"
-      layout="fill"
     />
   </div>
   );
@@ -71,27 +64,36 @@ function Dot ({ isActive, isUndecided }) {
 }
 
 function PageE () {
-  const [user, loading] = useAuthState(auth);
+  const [user] = useAuthState(auth);
+  const [otherUser, setOtherUser] = useState(null);
+  const [restaurant, setRestaurant] = useState({});
   const { query } = useRouter();
-  const [restaurantName, setRestaurantName] = useState([])
-  const [restaurantCuisine, setRestaurantCuisine] = useState('Chinese')
-  const [restaurantDish, setRestaurantDish] = useState(foodSrc);
+  const { partner_uid, restaurant_id } = query;
 
-  useEffect(()=>{
-    axios.get('api/restaurants/test')
-      .then(({data})=>{
-        let filteredRestaurant = data.filter((restaurant)=> restaurant.id === parseInt(query.restaurant_id));
-        setRestaurantName(filteredRestaurant[0].restaurantName || 'Wing Lum Cafe');
-        setRestaurantCuisine(filteredRestaurant[0].cuisine || 'Chinese');
-        setRestaurantDish(filteredRestaurant[0].dishes[0].photoURL || foodSrc);
-      })
+  // Get restaurant and user data on first component render
+  useEffect(() => {
+    (async function() {
+      const { data: allRestaurants } = await axios.get('/api/restaurants/test');
+      let correctRestaurant = allRestaurants.filter(x => x.id === parseInt(restaurant_id));
+      setRestaurant(correctRestaurant?.[0] || {});
+      const { data: partner } = await axios.get(`/api/users/getSingleUserInfo/${partner_uid}`);
+      setOtherUser(partner);
+    })()
+  }, []);
 
-  }, [query.restaurant_id, user]);
+  if (!restaurant || !otherUser)
+    return <div className="h-screen w-screen grid items-center text-center">Loading...</div>;
+
+  console.log(otherUser.photoURL);
+
+  const { restaurantName, cuisine: restaurantCuisine, dishes } = restaurant;
+  const restaurantDish = dishes?.[0]?.photoURL 
+    || 'https://s3-media0.fl.yelpcdn.com/bphoto/r3sFwiLBtF1x4rbXNUAfkg/o.jpg';
 
   return (
-    <div className="absolute bg-black text-white pt-[40px] pb-[40px] font-regular min-h-[100vh] z-[999] w-[100vw] bg-opacity-70 backdrop-blur-lg	">
+    <div className="absolute bg-black text-white py-6 font-regular min-h-[100vh] z-[999] w-[100vw] bg-opacity-70 backdrop-blur-lg	">
       <h1 className="text-[3.5rem] text-center font-logo">It&apos;s a Match!</h1>
-      <p className="text-center">You and Bro liked {restaurantName} !</p>
+      <p className="text-center">You and {otherUser.displayName} liked {restaurantName} !</p>
 
       <div className="flex justify-center mt-[30px] mb-[30px]">
         <div className="relative">
@@ -100,10 +102,10 @@ function PageE () {
             <Dot isActive={true} isUndecided={false} />
           </div>
           <div className="absolute bottom-0 left-[-60px]">
-            <Circle imgSrc={foodSrc} />
+            <Circle imgSrc={user.photoURL} />
           </div>
           <div className="absolute bottom-0 right-[-60px]">
-            <Circle imgSrc={foodSrc} />
+            <Circle imgSrc={'/images/otherUser.png'} />
           </div>
           <Card title={restaurantName} subTitle={restaurantCuisine} imgSrc={restaurantDish}/>
         </div>
@@ -113,13 +115,18 @@ function PageE () {
       <div className="mt-[40px] flex justify-center gap-5">
         <Btn
           text="Approve"
-          clickHandler={() => console.log('yo!')}
+          clickHandler={() => {
+            Router.push({
+              pathname: '/Page-J-Restaurant',
+              query: { name: restaurantName}
+            }, '/Page-J-Restaurant');
+          }}
           colorName="sunset-orange"
           isActive={true}
         />
         <Btn
           text="Reject"
-          clickHandler={() => console.log('yo!')}
+          clickHandler={() => Router.back()}
           colorName="star-dust-light"
           isActive={true}
         />
