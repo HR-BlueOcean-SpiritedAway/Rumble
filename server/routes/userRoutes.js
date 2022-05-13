@@ -38,7 +38,7 @@ router.post('/addFavorite', async (req, res) => {
     const userDocRef = doc(db, 'users', uid);
     const docSnap = await getDoc(userDocRef);
     const favorites = docSnap.data()?.favorites || [];
-    if (!(restaurantID in favorites)) favorites.push(restaurantID);
+    if (!(favorites.includes(restaurantID))) favorites.push(restaurantID);
     await updateDoc(userDocRef, { favorites });
     res.sendStatus(201);
   } catch (error) {
