@@ -1,8 +1,8 @@
- import RestaurantCard from './RestaurantCard.js';
- import foodSrc from '../public/images/food-img.jpg';
- import axios from 'axios';
- import { useEffect, useState } from 'react';
- import Router from 'next/router';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import Router from 'next/router';
+import RestaurantCard from './RestaurantCard';
+import BackButton from './Backbtn';
 
  // authorization
  const { auth } = require('../firebase');
@@ -43,18 +43,21 @@ export default function SelectedRestaurant() {
   useEffect(() => {
     setCards(() => {
       return favoritesData ? favoritesData.map((restaurant, index) => {
-         return (
-           <div className="grid items-center justify-items-center">
-             <RestaurantCard key={restaurant.id} restaurant={restaurant} clickHandler={restaurantClickHandler}/>
-           </div>
-         )
-       }) : null;
+        return (
+          <div key={restaurant.id} className="grid items-center justify-items-center">
+            <RestaurantCard restaurant={restaurant} clickHandler={restaurantClickHandler}/>
+          </div>
+        )
+      }) : null;
    });
   }, [favoritesData])
 
   return (
     <div className="bg-auto bg-dark-jungle-green h-full min-h-screen flex flex-col ">
       <div className="h-24 rounded-b-[3.5rem] bg-reef-gold text-5xl text-center font-bold text-white">
+        <div className="absolute top-4 left-4">
+          <BackButton clickHandler={() => Router.back()} />
+        </div>
         <div className="py-5">Top Picks</div>
       </div>
       <div className="py-4 space-x-4 text-xl font-extralight text-center text-white">Choose your top restaurant</div>
