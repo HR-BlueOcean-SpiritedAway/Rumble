@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Router from 'next/router';
 
 // Components
 import HeartBtn from '../components/HeartBtn';
