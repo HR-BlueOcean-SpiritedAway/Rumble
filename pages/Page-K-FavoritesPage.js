@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Router from 'next/router';
 
 // Components
 import BackBtn from '../components/Backbtn';
@@ -9,11 +10,20 @@ import breakfastSrc from '../public/images/breakfast-img.svg';
 import foodSrc from '../public/images/food-img.jpg';
 import { v4 as uuid } from 'uuid';
 
+
+function goBackPageC(){
+  Router.push({
+    pathname: '/Page-C-SwipeSolo',
+  }, '/Page-C-SwipeSolo');
+}
+
+
+
 function Header() {
   return(
     <div className="relative bg-moccasin text-white h-[300px] pl-[15px] flex flex-col justify-center">
       <div className="absolute top-[15px] left-[15px] w-[35px] h-[35px]">
-        <BackBtn clickHandler={() => console.log('asdf')}/>
+        <BackBtn clickHandler={goBackPageC}/>
       </div>
       <h1 className="font-dark text-[2.5rem]">Favorites</h1>
       <p className="w-[250px]">You probably know these like the back of your hand.</p>

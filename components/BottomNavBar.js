@@ -16,12 +16,24 @@ import Router from 'next/router';
     }, '/Page-I-Cart');
   }
 
+  function browseClickHandler(){
+    Router.push({
+      pathname: '/Page-H-BrowseRestaurants',
+    }, '/Page-H-BrowseRestaurants');
+  }
+
+  function favoriteClickHandler(){
+    Router.push({
+      pathname: '/Page-K-FavoritesPage',
+    }, '/Page-K-FavoritesPage');
+  }
+
 export default function BottomNavBar() {
   return (
     <div className="w-screen fixed bottom-0 py-4 px-3 flex justify-around bg-dark-jungle-green items-center">
       <Link href="#"><a><Image width={30} height={30} alt="cart" src={cart} onClick={cartClickHandler}/></a></Link>
-      <Link href="#"><a><Image width={30} height={30} alt="restaurants" src={restaurants}/></a></Link>
-      <Link href="#"><a><Image width={30} height={30} alt="list" src={list}/></a></Link>
+      <Link href="#"><a><Image width={30} height={30} alt="restaurants" src={restaurants} onClick={browseClickHandler}/></a></Link>
+      <Link href="#"><a><Image width={30} height={30} alt="list" src={list} onClick={favoriteClickHandler}/></a></Link>
       <Link href="/Page-D-SwipeGroup?partner_uid=cju0h6y5lHUyDS4pjBhXTm41Ktl1">
         <a><Image width={30} height={30} alt="add friend" src={addFriend}/></a>
       </Link>
