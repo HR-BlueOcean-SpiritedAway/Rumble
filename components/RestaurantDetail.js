@@ -29,7 +29,7 @@ export default function RestaurantDetail({ restaurant, user }) {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col bg-dark-jungle-green min-h-screen">
       <img className='relative w-full h-52 object-cover object-center' src={restaurant.dishes[0].photoURL}></img>
       <div className={isActive ? btnContActive : btnContInActive}>
         <Image
