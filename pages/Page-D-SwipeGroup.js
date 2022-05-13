@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import Router from 'next/router';
+import Router, { useRouter } from 'next/router';
 import TinderCard from 'react-tinder-card';
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import axios from 'axios';
@@ -8,27 +8,12 @@ import axios from 'axios';
 // Components
 import BottomNavBar from '../components/BottomNavBar';
 
-// User auth
-const { auth } = require('../firebase');
-const { useAuthState } = require('react-firebase-hooks/auth')
-
 // Icons
 import setting from '../public/images/setting.svg';
 import logo_white from '../public/images/Rumble_white.svg';
-import single_user from '../public/images/single_user.svg';
+import group_user from '../public/images/group_user.svg';
 import like from '../public/images/heart.svg';
 import dislike from '../public/images/dislike.svg';
-
-// Filter restaurants based on user preferences
-function filterRestaurants(array, preferences) {
-  const { cuisinePref, priceRange } = preferences;
-  let filtered = array;
-  if (cuisinePref && cuisinePref !== 'All')
-    filtered = filtered.filter(x => x.cuisine === cuisinePref);
-  if (priceRange)
-    filtered = filtered.filter(x => x.priceRange === priceRange);
-  return filtered;
-}
 
 // Tag used to display restaurant information
 function Tag({ text }) {
@@ -39,70 +24,72 @@ function Tag({ text }) {
   );
 };
 
-// Page C component
-export default function RestaurantSwipeSolo () {
+// Page D component
+export default function RestaurantSwipeGroup () {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [restaurants, setRestaurants] = useState([])
-  const [rightSwipes, setRightSwipes] = useState([]);
-  const [userPref, setUserPref] = useState([]);
-  const [user] = useAuthState(auth);
+  const { query } = useRouter();
+  const { partner_uid } = query;
 
-  // Fetch user preferences on initial page render
+  // Get partner's favorite restaurants to swipe on (good enough for now!!!)
+  // Partner will ALWAYS be blue.ocean.rumble@gmail.com
   useEffect(() => {
-    axios.get(`/api/users/getSingleUserInfo/${user.uid}`)
-    .then(({ data }) => {
-      let { cuisinePref, priceRange } = data;
-      setUserPref({ cuisinePref, priceRange });
-    })
-    .catch(console.error);
-  }, []);
+    if (!partner_uid) return;
 
-  // On initial render and/or when user preferences change, refilter the list
-  // of restaurants seen by the user
-  useEffect(() => {
-    axios.get('/api/restaurants/test')
-      .then(({ data }) => {
-        const filteredRestaurants = filterRestaurants(data, userPref);
+    (async function() {
+      try {
+        const { data: partnerFavs } = await axios.get(`/api/users/getFavorites/${partner_uid}`);
+        const { data: allRestaurants } = await axios.get('/api/restaurants/test');
+  
+        const filteredRestaurants = allRestaurants.filter(r => (partnerFavs.includes(r.id)));
         setRestaurants(filteredRestaurants);
         setCurrentIndex(Math.max(filteredRestaurants.length - 1, 0))
-      })
-      .catch(console.error)
-  }, [userPref]);
-
-  // Automatically navigate to Page L if user has swiped right on 3 restaurants
-  useEffect(() => {
-    if(rightSwipes.length === 3) Router.push('/Page-L-SelectedRestaurants');
-  }, [rightSwipes])
+      } catch (error) {
+        console.error(error);
+      }
+    })();
+  }, []);
 
   // used for outOfFrame closure
   const currentIndexRef = useRef(currentIndex)
   const childRefs = useMemo(
     () => Array(restaurants.length).fill(0).map(_ => (React.createRef())), 
-    [restaurants.length]
+    [restaurants]
   );
 
-  // Decrease current index on swipe
-  const handleSwipe = (direction, index, res) => {
-    if (direction === 'right') {
-      setRightSwipes((prev) => [res].concat(prev));
-      axios.post('/api/users/addFavorite', { uid: user.uid, restaurantID: res.id})
-        .catch(console.error);
-    }
+  const updateCurrentIndex = (val) => {
+    setCurrentIndex(val)
+    currentIndexRef.current = val
+  }
 
-    setCurrentIndex(index - 1);
-    currentIndexRef.current = index - 1;
+  const canSwipe = currentIndex >= 0
+
+  // Go to page E on right swipe; decrease current index on left swipe
+  const handleSwipe = (direction, index, res) => {
+    updateCurrentIndex(index - 1);
+
+    if (direction === 'right') {
+      Router.push(`/Page-E-matchGroup?partner_uid=${partner_uid}&restaurant_id=${res.id}`);
+    }
   }
 
   // Programatically swipe on current card
   const swipe = async (direction) => {
-    if ((currentIndex >= 0) && (currentIndex < restaurants.length)) {
-      try {
-        await childRefs[currentIndex].current.swipe(direction);
-      } catch {
+    if (canSwipe && currentIndex < restaurants.length) {
+      try { 
+        await childRefs[currentIndex].current.swipe(direction); 
+      } catch (err) {
         ;
       }
     }
   }
+
+  if (!partner_uid)
+    return (
+      <div className="h-screen w-screen grid items-center text-center">
+        <p>No partner selected.</p>
+      </div>
+    );
 
   return (
     // Page container
@@ -115,7 +102,7 @@ export default function RestaurantSwipeSolo () {
           </a>
         </Link>
         <Image width={105} height={40} alt="white logo" src={logo_white}/>
-        <Image width={30} height={30} alt="single user" src={single_user}/>
+        <Image width={30} height={30} alt="group user" src={group_user}/>
       </div>
 
       {/* Swipe Area */}
@@ -130,7 +117,7 @@ export default function RestaurantSwipeSolo () {
           >
             <div
               style={{ backgroundImage: `url(${res?.dishes?.[0]?.photoURL}`  }}
-              className="bg-gradient-to-t from-black relative bg-cover bg-center
+              className="bg-gradient-to-t from-black relative bg-cover bg-center 
                         w-[360px] h-[65vh] rounded-[30px] flex flex-col justify-end"
             >
               <h3 className="text-center text-white text-[2.25rem] font-bold">
@@ -160,7 +147,7 @@ export default function RestaurantSwipeSolo () {
         {/* Like/Dislike Icons */}
         <div className="absolute bottom-[80px] w-[360px] flex justify-evenly">
           {/* Dislike Icon */}
-          <div
+          <div 
             className="bg-white w-[40px] h-[40px] rounded-[30px] grid items-center"
             onClick={() => swipe('left')}
           >

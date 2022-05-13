@@ -12,7 +12,9 @@ export default function BottomNavBar() {
       <Link href="#"><a><Image width={30} height={30} alt="cart" src={cart}/></a></Link>
       <Link href="#"><a><Image width={30} height={30} alt="restaurants" src={restaurants}/></a></Link>
       <Link href="#"><a><Image width={30} height={30} alt="list" src={list}/></a></Link>
-      <Link href="#"><a><Image width={30} height={30} alt="add friend" src={addFriend}/></a></Link>
+      <Link href="/Page-D-SwipeGroup?partner_uid=cju0h6y5lHUyDS4pjBhXTm41Ktl1">
+        <a><Image width={30} height={30} alt="add friend" src={addFriend}/></a>
+      </Link>
     </div>
   );
 }
