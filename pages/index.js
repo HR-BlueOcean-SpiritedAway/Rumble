@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Router from 'next/router';
 import { auth } from '../firebase';
 
 // Components
@@ -18,6 +19,8 @@ import Homepage from './Page-B-homepage.js';
 ***************************************************************************** */
 
 export default function Home() {
+  Router.push('/Page-G-Settings')
+
   return (
     <div>
       <Head>
