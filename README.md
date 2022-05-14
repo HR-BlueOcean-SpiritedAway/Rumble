@@ -9,7 +9,7 @@ https://user-images.githubusercontent.com/521934/168444266-15f73cc7-9e8d-4032-8f
 ![Screen Shot 2022-05-14 at 10 57 58 AM](https://user-images.githubusercontent.com/521934/168443364-86316a63-4f54-41c0-9ada-b3686f51b9d0.png)
 
 ## Features TO DO
-**Google Authentication** - sign in using OAuth <br>
+**Authentication** - sign in using Google OAuth <br>
 **Swipe Solo** - single user able to swipe on photos, once three photos are right swiped (heart), the user is directed to a top three restaurants page.<br>
 **Swipe Group Mode**- add a friend, swipe together, and choose a restaurant you both want! <br>
 **Settings**- Choose cuisine, price, location, and distance of restaurants that you want to swipe on.<br>
