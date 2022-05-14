@@ -11,11 +11,11 @@ https://user-images.githubusercontent.com/521934/168444266-15f73cc7-9e8d-4032-8f
 ## Features TO DO
 **Google Authentication** - sign in using OAuth <br>
 **Swipe Solo** - single user able to swipe on photos, once three photos are right swiped (heart), the user is directed to a top three restaurants page.<br>
-**Swipe Group Mode **- add a friend, swipe together, and choose a restaurant you both want!<br>
-**Settings **- Choose cuisine, price, location, and distance of restaurants that you want to swipe on.<br>
+**Swipe Group Mode**- add a friend, swipe together, and choose a restaurant you both want! <br>
+**Settings**- Choose cuisine, price, location, and distance of restaurants that you want to swipe on.<br>
 **Restaurant List Mode** - browse local restaurants that match your criteria, or search for the food you want to eat.<br>
-**Restaurant View **- Learn more about your chosen restaurant, browse their menu, and add items to your cart.<br>
-**Cart **- See a list of items you've added to your cart, and proceed to checkout to complete your order.<br>
+**Restaurant View**- Learn more about your chosen restaurant, browse their menu, and add items to your cart.<br>
+**Cart**- See a list of items you've added to your cart, and proceed to checkout to complete your order.<br>
 
 ## Tech Stack TO DO
 ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
