@@ -38,41 +38,36 @@ Insert Description here of what you created does and after that, describe what y
 [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/garofalof)
 #### Full-Stack Engineer
 
-Insert Description here of what you created does and after that, describe what you did to make it happen.
 
 ### Contributor: Dennis Cao
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dennisrcao/)
 [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/dennisrcao/)
 #### Product Manager | Full-Stack Engineer 
-Cart Page, Match Group Page, Single Restaurants Page, Connecting all pages together and data flow. 
+
 
 ### Contributor: Jake Gilfix
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)]()
 [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)]()
 #### Full-Stack Engineer
 
-Insert Description here of what you created does and after that, describe what you did to make it happen.
 
 ### Contributor: Dong Hyoung Kim 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dong-hyoung-kim/)
 [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/DongHyoungKim)
 #### Full-Stack Engineer
 
-Insert Description here of what you created does and after that, describe what you did to make it happen.
 
 ### Contributor: Daniel Esquivel-Reynoso
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)]()
 [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)]()
 #### Full-Stack Engineer
 
-Insert Description here of what you created does and after that, describe what you did to make it happen.
 
 ### Contributor: Chris Padovan
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/chris-padovan/)
 [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/ChrisPadovan)
 #### Full-Stack Engineer
 
-Insert Description here of what you created does and after that, describe what you did to make it happen.
 
 ## Getting Started
 
